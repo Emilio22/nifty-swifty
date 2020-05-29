@@ -143,10 +143,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="blueLabel" destination="wmZ-fI-Uk7" id="eCo-gF-rEv"/>
                         <outlet property="blueSlider" destination="BCL-Wy-h2x" id="tug-rc-eRo"/>
                         <outlet property="colorLabel" destination="jMX-Ud-lEt" id="e44-il-996"/>
-                        <outlet property="greenLabel" destination="sia-p4-6q6" id="1AP-MD-6Ci"/>
-                        <outlet property="greenSlider" destination="sia-p4-6q6" id="Fcj-ze-Ekn"/>
+                        <outlet property="greenLabel" destination="eFh-eJ-fJY" id="4yQ-2L-jXR"/>
+                        <outlet property="greenSlider" destination="sia-p4-6q6" id="rbp-lm-Mq5"/>
                         <outlet property="redLabel" destination="Gvm-ZV-U0v" id="uap-jG-1J1"/>
                         <outlet property="redSlider" destination="Tfl-Dw-mhg" id="ObJ-Rc-W0d"/>
                     </connections>
