@@ -48,6 +48,9 @@
                                                     </label>
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="Tfl-Dw-mhg">
                                                         <rect key="frame" x="34" y="0.0" width="276.5" height="64"/>
+                                                        <connections>
+                                                            <action selector="redSliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="t26-JH-Mt9"/>
+                                                        </connections>
                                                     </slider>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gvm-ZV-U0v">
                                                         <rect key="frame" x="324.5" y="0.0" width="10.5" height="63"/>
@@ -68,6 +71,9 @@
                                                     </label>
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="sia-p4-6q6">
                                                         <rect key="frame" x="35.5" y="0.0" width="275" height="64"/>
+                                                        <connections>
+                                                            <action selector="greenSliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="vn4-3q-ii5"/>
+                                                        </connections>
                                                     </slider>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eFh-eJ-fJY">
                                                         <rect key="frame" x="324.5" y="0.0" width="10.5" height="63"/>
@@ -88,6 +94,9 @@
                                                     </label>
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="BCL-Wy-h2x">
                                                         <rect key="frame" x="35" y="0.0" width="274.5" height="64"/>
+                                                        <connections>
+                                                            <action selector="blueSliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="n3d-8B-9Gz"/>
+                                                        </connections>
                                                     </slider>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wmZ-fI-Uk7">
                                                         <rect key="frame" x="324.5" y="0.0" width="10.5" height="63"/>
@@ -107,11 +116,17 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="52" height="189"/>
                                                 <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="17"/>
                                                 <state key="normal" title="Reset"/>
+                                                <connections>
+                                                    <action selector="resetPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iku-bS-sA6"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pNh-aZ-9AP">
                                                 <rect key="frame" x="117" y="0.0" width="93" height="189"/>
                                                 <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="17"/>
                                                 <state key="normal" title="Set Color"/>
+                                                <connections>
+                                                    <action selector="setColorPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Rnd-c3-6w7"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -128,7 +143,12 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="blueSlider" destination="BCL-Wy-h2x" id="tug-rc-eRo"/>
                         <outlet property="colorLabel" destination="jMX-Ud-lEt" id="e44-il-996"/>
+                        <outlet property="greenLabel" destination="sia-p4-6q6" id="1AP-MD-6Ci"/>
+                        <outlet property="greenSlider" destination="sia-p4-6q6" id="Fcj-ze-Ekn"/>
+                        <outlet property="redLabel" destination="Gvm-ZV-U0v" id="uap-jG-1J1"/>
+                        <outlet property="redSlider" destination="Tfl-Dw-mhg" id="ObJ-Rc-W0d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
