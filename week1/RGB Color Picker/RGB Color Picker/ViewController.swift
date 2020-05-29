@@ -37,7 +37,7 @@ class ViewController: UIViewController {
     @IBAction func resetPressed(_ sender: UIButton) {
     }
     
-    @IBAction func setColorPressed(_ sender: Any) {
+    @IBAction func setColorPressed(_ sender: UIButton) {
     }
     
 }
