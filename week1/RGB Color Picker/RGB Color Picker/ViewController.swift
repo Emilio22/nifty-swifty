@@ -25,14 +25,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var resetBtn: UIButton!
     @IBOutlet weak var setColorBtn: UIButton!
     
-    
-    @IBOutlet weak var selectedSegmentIndex: UISegmentedControl!
+    @IBOutlet weak var modeLabel: UILabel!
     
     
     // Initialize values for each slider
     var topValue : Float = 0.0,
         bottomValue : Float = 0.0,
         midValue : Float = 0.0
+    
     
     //Constant to determin how what background is too bright for light font
     let tooBright : Float = 400.00
@@ -44,22 +44,27 @@ class ViewController: UIViewController {
         updateColors()
     }
     
+    @IBAction func modeChanged(_ sender: UISegmentedControl) {
+        adjustLabelText(selectedIndex: sender.selectedSegmentIndex)
+        
+    }
+    
     
     @IBAction func topSliderChanged(_ sender: UISlider) {
         topValue = sender.value.rounded()
-        updateLabels()
+        updateSliderValueLabels()
         updateColors()
     }
     
     @IBAction func midSliderChanged(_ sender: UISlider) {
         midValue = sender.value.rounded()
-        updateLabels()
+        updateSliderValueLabels()
         updateColors()
     }
     
     @IBAction func bottomSliderChanged(_ sender: UISlider) {
         bottomValue = sender.value.rounded()
-        updateLabels()
+        updateSliderValueLabels()
         updateColors()
     }
     
@@ -70,7 +75,7 @@ class ViewController: UIViewController {
         bottomSlider.value = 0
         topSlider.value = 0
         midSlider.value = 0
-        updateLabels()
+        updateSliderValueLabels()
         updateColors()
         colorLabel.text = "Pick a Color"
     }
@@ -92,7 +97,7 @@ class ViewController: UIViewController {
         
     }
     
-    func updateLabels() {
+    func updateSliderValueLabels() {
         topValueLabel.text = String(format: "%.0f", topValue)
         midValueLabel.text = String(format: "%.0f", midValue)
         bottomValueLabel.text = String(format: "%.0f", bottomValue)
@@ -111,6 +116,21 @@ class ViewController: UIViewController {
         //Change background
         self.view.backgroundColor = UIColor.init(displayP3Red: cgRed, green: cgGreen, blue: cgBlue, alpha: cgAlpha)
     }
+    
+    func adjustLabelText(selectedIndex: Int){
+        if selectedIndex == 0 {
+            topNameLabel.text = "R :"
+            midNameLabel.text = "G :"
+            bottomNameLabel.text = "B :"
+            modeLabel.text = "Red, Green, Blue"
+        } else {
+            topNameLabel.text = "H :"
+            midNameLabel.text = "S :"
+            bottomNameLabel.text = "B :"
+            modeLabel.text = "Hue, Saturation, Brightness"
+        }
+    }
+    
     
     
     func adjustLabelColors(){
