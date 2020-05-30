@@ -57,7 +57,7 @@
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="Tfl-Dw-mhg">
                                                         <rect key="frame" x="34" y="0.0" width="276.5" height="64"/>
                                                         <connections>
-                                                            <action selector="redSliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="t26-JH-Mt9"/>
+                                                            <action selector="topSliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="t26-JH-Mt9"/>
                                                         </connections>
                                                     </slider>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gvm-ZV-U0v">
@@ -80,7 +80,7 @@
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="sia-p4-6q6">
                                                         <rect key="frame" x="35.5" y="0.0" width="275" height="64"/>
                                                         <connections>
-                                                            <action selector="greenSliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="vn4-3q-ii5"/>
+                                                            <action selector="midSliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="vn4-3q-ii5"/>
                                                         </connections>
                                                     </slider>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eFh-eJ-fJY">
@@ -103,7 +103,7 @@
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="BCL-Wy-h2x">
                                                         <rect key="frame" x="35" y="0.0" width="274.5" height="64"/>
                                                         <connections>
-                                                            <action selector="blueSliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="n3d-8B-9Gz"/>
+                                                            <action selector="bottomSliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="n3d-8B-9Gz"/>
                                                         </connections>
                                                     </slider>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wmZ-fI-Uk7">
@@ -151,16 +151,17 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="bLabel" destination="fV3-Gc-2ex" id="XBv-7h-Pu8"/>
-                        <outlet property="blueLabel" destination="wmZ-fI-Uk7" id="eCo-gF-rEv"/>
-                        <outlet property="blueSlider" destination="BCL-Wy-h2x" id="tug-rc-eRo"/>
+                        <outlet property="bottomNameLabel" destination="fV3-Gc-2ex" id="XBv-7h-Pu8"/>
+                        <outlet property="bottomSlider" destination="BCL-Wy-h2x" id="tug-rc-eRo"/>
+                        <outlet property="bottomValueLabel" destination="wmZ-fI-Uk7" id="eCo-gF-rEv"/>
                         <outlet property="colorLabel" destination="jMX-Ud-lEt" id="e44-il-996"/>
-                        <outlet property="gLabel" destination="aPW-mF-McD" id="NQq-PY-pBw"/>
-                        <outlet property="greenLabel" destination="eFh-eJ-fJY" id="4yQ-2L-jXR"/>
-                        <outlet property="greenSlider" destination="sia-p4-6q6" id="rbp-lm-Mq5"/>
-                        <outlet property="rLabel" destination="731-p1-KiJ" id="zcs-r3-D8n"/>
-                        <outlet property="redLabel" destination="Gvm-ZV-U0v" id="uap-jG-1J1"/>
-                        <outlet property="redSlider" destination="Tfl-Dw-mhg" id="ObJ-Rc-W0d"/>
+                        <outlet property="midNameLabel" destination="aPW-mF-McD" id="NQq-PY-pBw"/>
+                        <outlet property="midSlider" destination="sia-p4-6q6" id="rbp-lm-Mq5"/>
+                        <outlet property="midValueLabel" destination="eFh-eJ-fJY" id="4yQ-2L-jXR"/>
+                        <outlet property="selectedSegmentIndex" destination="KVa-m8-TQJ" id="FEJ-4A-RgQ"/>
+                        <outlet property="topNameLabel" destination="731-p1-KiJ" id="zcs-r3-D8n"/>
+                        <outlet property="topSlider" destination="Tfl-Dw-mhg" id="ObJ-Rc-W0d"/>
+                        <outlet property="topValueLabel" destination="Gvm-ZV-U0v" id="uap-jG-1J1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

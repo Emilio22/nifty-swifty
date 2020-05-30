@@ -11,25 +11,27 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var colorLabel: UILabel!
-    @IBOutlet weak var redSlider: UISlider!
-    @IBOutlet weak var redLabel: UILabel!
-    @IBOutlet weak var greenSlider: UISlider!
-    @IBOutlet weak var greenLabel: UILabel!
-    @IBOutlet weak var blueSlider: UISlider!
-    @IBOutlet weak var blueLabel: UILabel!
+    @IBOutlet weak var topSlider: UISlider!
+    @IBOutlet weak var topValueLabel: UILabel!
+    @IBOutlet weak var midSlider: UISlider!
+    @IBOutlet weak var midValueLabel: UILabel!
+    @IBOutlet weak var bottomSlider: UISlider!
+    @IBOutlet weak var bottomValueLabel: UILabel!
     
-    @IBOutlet weak var rLabel: UILabel!
-    @IBOutlet weak var gLabel: UILabel!
-    @IBOutlet weak var bLabel: UILabel!
+    @IBOutlet weak var topNameLabel: UILabel!
+    @IBOutlet weak var midNameLabel: UILabel!
+    @IBOutlet weak var bottomNameLabel: UILabel!
+    
+    @IBOutlet weak var selectedSegmentIndex: UISegmentedControl!
     
     
     // Initialize values for each slider
-    var redValue : Float = 0.0,
-        blueValue : Float = 0.0,
-        greenValue : Float = 0.0
+    var topValue : Float = 0.0,
+        bottomValue : Float = 0.0,
+        midValue : Float = 0.0
     
     //Constant to determin how what background is too bright for light font
-    let tooBright : Float = 475.00
+    let tooBright : Float = 430.00
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,32 +41,31 @@ class ViewController: UIViewController {
     }
     
     
-
-    @IBAction func redSliderChanged(_ sender: UISlider) {
-        redValue = sender.value.rounded()
+    @IBAction func topSliderChanged(_ sender: UISlider) {
+        topValue = sender.value.rounded()
         updateLabels()
         updateColors()
     }
     
-    @IBAction func greenSliderChanged(_ sender: UISlider) {
-        greenValue = sender.value.rounded()
+    @IBAction func midSliderChanged(_ sender: UISlider) {
+        midValue = sender.value.rounded()
         updateLabels()
         updateColors()
     }
     
-    @IBAction func blueSliderChanged(_ sender: UISlider) {
-        blueValue = sender.value.rounded()
+    @IBAction func bottomSliderChanged(_ sender: UISlider) {
+        bottomValue = sender.value.rounded()
         updateLabels()
         updateColors()
     }
     
     @IBAction func resetPressed(_ sender: UIButton) {
-        blueValue = 0
-        redValue = 0
-        greenValue = 0
-        blueSlider.value = 0
-        redSlider.value = 0
-        greenSlider.value = 0
+        bottomValue = 0
+        topValue = 0
+        midValue = 0
+        bottomSlider.value = 0
+        topSlider.value = 0
+        midSlider.value = 0
         updateLabels()
         updateColors()
         colorLabel.text = "Pick a Color"
@@ -88,37 +89,37 @@ class ViewController: UIViewController {
     }
     
     func updateLabels() {
-        blueLabel.text = String(blueValue)
-        redLabel.text = String(redValue)
-        greenLabel.text = String(greenValue)
+        bottomValueLabel.text = String(bottomValue)
+        topValueLabel.text = String(topValue)
+        midValueLabel.text = String(midValue)
     }
     
     func updateColors(){
-        let cgRed = CGFloat(redValue / redSlider.maximumValue)
-        let cgGreen = CGFloat(greenValue / greenSlider.maximumValue)
-        let cgBlue = CGFloat(blueValue / blueSlider.maximumValue)
+        //convert values to CGFloats for UIColor.init
+        let cgRed = CGFloat(topValue / topSlider.maximumValue)
+        let cgGreen = CGFloat(midValue / midSlider.maximumValue)
+        let cgBlue = CGFloat(bottomValue / bottomSlider.maximumValue)
         let cgAlpha = CGFloat(1.0)
-        let rgbSum = redValue + greenValue + blueValue
-        print(rgbSum)
+        let rgbSum = topValue + midValue + bottomValue
         
         //if background is bright, change font to be dark
         if rgbSum > tooBright {
             colorLabel.textColor = UIColor.black
-            redLabel.textColor = UIColor.black
-            greenLabel.textColor = UIColor.black
-            blueLabel.textColor = UIColor.black
-            rLabel.textColor = UIColor.black
-            gLabel.textColor = UIColor.black
-            bLabel.textColor = UIColor.black
+            topValueLabel.textColor = UIColor.black
+            midValueLabel.textColor = UIColor.black
+            bottomValueLabel.textColor = UIColor.black
+            topNameLabel.textColor = UIColor.black
+            midNameLabel.textColor = UIColor.black
+            bottomNameLabel.textColor = UIColor.black
             
         } else {
             colorLabel.textColor = UIColor.white
-            redLabel.textColor = UIColor.white
-            greenLabel.textColor = UIColor.white
-            blueLabel.textColor = UIColor.white
-            rLabel.textColor = UIColor.white
-            gLabel.textColor = UIColor.white
-            bLabel.textColor = UIColor.white
+            topValueLabel.textColor = UIColor.white
+            midValueLabel.textColor = UIColor.white
+            bottomValueLabel.textColor = UIColor.white
+            topNameLabel.textColor = UIColor.white
+            midNameLabel.textColor = UIColor.white
+            bottomNameLabel.textColor = UIColor.white
         }
         
         //Change background
