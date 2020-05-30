@@ -28,7 +28,7 @@ class ViewController: UIViewController {
         blueValue : Float = 0.0,
         greenValue : Float = 0.0
     
-    //Constant to determin how bright the background is
+    //Constant to determin how what background is too bright for light font
     let tooBright : Float = 475.00
     
     override func viewDidLoad() {
