@@ -158,7 +158,9 @@
                         <outlet property="midNameLabel" destination="aPW-mF-McD" id="NQq-PY-pBw"/>
                         <outlet property="midSlider" destination="sia-p4-6q6" id="rbp-lm-Mq5"/>
                         <outlet property="midValueLabel" destination="eFh-eJ-fJY" id="4yQ-2L-jXR"/>
+                        <outlet property="resetBtn" destination="PV7-1D-dzm" id="vCI-hh-Xmy"/>
                         <outlet property="selectedSegmentIndex" destination="KVa-m8-TQJ" id="FEJ-4A-RgQ"/>
+                        <outlet property="setColorBtn" destination="pNh-aZ-9AP" id="9mR-Va-pJ5"/>
                         <outlet property="topNameLabel" destination="731-p1-KiJ" id="zcs-r3-D8n"/>
                         <outlet property="topSlider" destination="Tfl-Dw-mhg" id="ObJ-Rc-W0d"/>
                         <outlet property="topValueLabel" destination="Gvm-ZV-U0v" id="uap-jG-1J1"/>

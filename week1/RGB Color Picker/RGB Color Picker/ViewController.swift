@@ -22,6 +22,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var midNameLabel: UILabel!
     @IBOutlet weak var bottomNameLabel: UILabel!
     
+    @IBOutlet weak var resetBtn: UIButton!
+    @IBOutlet weak var setColorBtn: UIButton!
+    
+    
     @IBOutlet weak var selectedSegmentIndex: UISegmentedControl!
     
     
@@ -31,8 +35,8 @@ class ViewController: UIViewController {
         midValue : Float = 0.0
     
     //Constant to determin how what background is too bright for light font
-    let tooBright : Float = 430.00
-    
+    let tooBright : Float = 400.00
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -122,6 +126,9 @@ class ViewController: UIViewController {
             midNameLabel.textColor = UIColor.black
             bottomNameLabel.textColor = UIColor.black
             
+            resetBtn.setTitleColor(.black, for: .normal)
+            setColorBtn.setTitleColor(.black, for: .normal)
+            
         } else {
             colorLabel.textColor = UIColor.white
             topValueLabel.textColor = UIColor.white
@@ -130,7 +137,12 @@ class ViewController: UIViewController {
             topNameLabel.textColor = UIColor.white
             midNameLabel.textColor = UIColor.white
             bottomNameLabel.textColor = UIColor.white
+            
+            resetBtn.setTitleColor(.systemBlue, for: .normal)
+            setColorBtn.setTitleColor(.systemBlue, for: .normal)
         }
+        
+        
     }
     
 }
