@@ -89,9 +89,9 @@ class ViewController: UIViewController {
     }
     
     func updateLabels() {
-        bottomValueLabel.text = String(bottomValue)
-        topValueLabel.text = String(topValue)
-        midValueLabel.text = String(midValue)
+        topValueLabel.text = String(format: "%.0f", topValue)
+        midValueLabel.text = String(format: "%.0f", midValue)
+        bottomValueLabel.text = String(format: "%.0f", bottomValue)
     }
     
     func updateColors(){
