@@ -100,6 +100,16 @@ class ViewController: UIViewController {
         let cgGreen = CGFloat(midValue / midSlider.maximumValue)
         let cgBlue = CGFloat(bottomValue / bottomSlider.maximumValue)
         let cgAlpha = CGFloat(1.0)
+
+        //Adjust color of labels depending on background color
+        adjustLabelColors()
+        
+        //Change background
+        self.view.backgroundColor = UIColor.init(displayP3Red: cgRed, green: cgGreen, blue: cgBlue, alpha: cgAlpha)
+    }
+    
+    
+    func adjustLabelColors(){
         let rgbSum = topValue + midValue + bottomValue
         
         //if background is bright, change font to be dark
@@ -121,9 +131,6 @@ class ViewController: UIViewController {
             midNameLabel.textColor = UIColor.white
             bottomNameLabel.textColor = UIColor.white
         }
-        
-        //Change background
-        self.view.backgroundColor = UIColor.init(displayP3Red: cgRed, green: cgGreen, blue: cgBlue, alpha: cgAlpha)
     }
     
 }
