@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> 36d617a8fb83ed79f139405e2d5a89041d0ce64e
 ## Name
 Emilio Rodriguez
 
@@ -28,13 +24,3 @@ tending and serving in my favorite Restaurants. I love learning about new cuisin
 ## Goals
 My current goal is to take as much in from this boot camp as possible and then find work as a software developer making iOS apps.
 I am also trying to run a 5k in under 20 minutes, and later in life I would like to open my own restaurant.
-
-<<<<<<< HEAD
-=======
-
-
-
-
-
-
->>>>>>> 36d617a8fb83ed79f139405e2d5a89041d0ce64e
