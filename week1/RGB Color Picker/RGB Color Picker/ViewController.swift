@@ -41,11 +41,12 @@ class ViewController: UIViewController {
     //Constant to determin how what background is too bright for light font
     let tooBright : Float = 400.00
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        updateColors()
+        updateColors(setBackground: true)
     }
     
     @IBAction func modeChanged(_ sender: UISegmentedControl) {
@@ -59,23 +60,19 @@ class ViewController: UIViewController {
     @IBAction func topSliderChanged(_ sender: UISlider) {
         topValue = sender.value.rounded()
         updateSliderValueLabels()
-        updateColors()
+        updateColors(setBackground: false)
     }
     
     @IBAction func midSliderChanged(_ sender: UISlider) {
         midValue = sender.value.rounded()
         updateSliderValueLabels()
-        updateColors()
+        updateColors(setBackground: false)
     }
     
     @IBAction func bottomSliderChanged(_ sender: UISlider) {
         bottomValue = sender.value.rounded()
         updateSliderValueLabels()
-        updateColors()
-    }
-    
-    @IBAction func infoPressed(_ sender: UIButton) {
-        
+        updateColors(setBackground: false)
     }
     
     @IBAction func resetPressed(_ sender: UIButton) {
@@ -90,8 +87,7 @@ class ViewController: UIViewController {
             action in
             
             self.colorLabel.text = alertController.textFields![0].text
-            
-            self.updateColors()
+            self.updateColors(setBackground: true)
         })
         
         alertController.addAction(action)
@@ -107,7 +103,7 @@ class ViewController: UIViewController {
         topSlider.value = 0
         midSlider.value = 0
         updateSliderValueLabels()
-        updateColors()
+        updateColors(setBackground: true)
         colorLabel.text = "Pick a Color"
     }
     
@@ -117,25 +113,35 @@ class ViewController: UIViewController {
         bottomValueLabel.text = String(format: "%.0f", bottomValue)
     }
     
-    func updateColors(){
+    func updateColors(setBackground: Bool){
         //convert values to CGFloats for UIColor.init
         let cgTop = CGFloat(topValue / topSlider.maximumValue)
         let cgMid = CGFloat(midValue / midSlider.maximumValue)
         let cgBottom = CGFloat(bottomValue / bottomSlider.maximumValue)
         let cgAlpha = CGFloat(1.0)
 
-        //Adjust color of labels depending on background color
-        adjustLabelColors()
         
-        //Change background
-        //if selectedIndex = 0 then RGB, else HSB
-        if selectedIndex == 0{
-            self.view.backgroundColor = UIColor.init(displayP3Red: cgTop, green: cgMid, blue: cgBottom, alpha: cgAlpha)
+        // if setBackground is true, change background. else change preview color
+        if setBackground {
+            //Change background
+            //if selectedIndex = 0 then RGB, else HSB
+            if selectedIndex == 0{
+                self.view.backgroundColor = UIColor.init(displayP3Red: cgTop, green: cgMid, blue: cgBottom, alpha: cgAlpha)
+            } else {
+                self.view.backgroundColor = UIColor.init(hue: cgTop, saturation: cgMid, brightness: cgBottom, alpha: cgAlpha)
+            }
+            //Adjust color of labels depending on background color
+            adjustLabelColors()
         } else {
-            self.view.backgroundColor = UIColor.init(hue: cgTop, saturation: cgMid, brightness: cgBottom, alpha: cgAlpha)
+            if selectedIndex == 0{
+                modeLabel.textColor = UIColor.init(displayP3Red: cgTop, green: cgMid, blue: cgBottom, alpha: cgAlpha)
+            } else {
+                modeLabel.textColor = UIColor.init(hue: cgTop, saturation: cgMid, brightness: cgBottom, alpha: cgAlpha)
+            }
         }
         
     }
+    
     
     func adjustLabelText(){
         //if selectedIndex = 0 then RGB, else HSB
@@ -202,6 +208,8 @@ class ViewController: UIViewController {
         }
     }
     
+    
+    //pass index value over to infoViewController so it can determin which wiki to load
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToInfo" {
             let vc = segue.destination as! InfoViewController

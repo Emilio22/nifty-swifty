@@ -20,6 +20,9 @@ class InfoViewController: UIViewController {
         super.viewDidLoad()
     
         
+        //if index = 0, load RGB wiki
+        //   index = 1, load HSB wiki
+        //if index = nil, load 404 wiki
         var urlStr = ""
         if let index = indexValue {
             if index == 0 {
