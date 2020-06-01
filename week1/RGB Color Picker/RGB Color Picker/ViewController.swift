@@ -24,6 +24,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var resetBtn: UIButton!
     @IBOutlet weak var setColorBtn: UIButton!
+    @IBOutlet weak var infoBtn: UIButton!
     
     @IBOutlet weak var modeLabel: UILabel!
     
@@ -71,6 +72,10 @@ class ViewController: UIViewController {
         bottomValue = sender.value.rounded()
         updateSliderValueLabels()
         updateColors()
+    }
+    
+    @IBAction func infoPressed(_ sender: UIButton) {
+        
     }
     
     @IBAction func resetPressed(_ sender: UIButton) {
