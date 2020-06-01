@@ -200,8 +200,13 @@ class ViewController: UIViewController {
             resetBtn.setTitleColor(.systemBlue, for: .normal)
             setColorBtn.setTitleColor(.systemBlue, for: .normal)
         }
-        
-        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToInfo" {
+            let vc = segue.destination as! InfoViewController
+            vc.indexValue = self.selectedIndex
+        }
     }
     
 }
