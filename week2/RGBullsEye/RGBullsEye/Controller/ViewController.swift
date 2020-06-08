@@ -41,34 +41,52 @@ class ViewController: UIViewController {
     
   var game = BullsEyeGame()
   var rgb = RGB()
-  
-  @IBAction func aSliderMoved(sender: UISlider) {
-    rgb.r = Int(redSlider.value)
-    rgb.g = Int(greenSlider.value)
-    rgb.b = Int(blueSlider.value)
-    game.currentRGB = rgb
-    updateView()
-  }
-  
-  @IBAction func showAlert(sender: AnyObject) {
-
-  }
-  
-  @IBAction func startOver(sender: AnyObject) {
-
-  }
-  
-  func updateView() {
-    guessLabel.backgroundColor = UIColor(rgbStruct: game.currentRGB)
-    redLabel.text = String(rgb.r)
-    greenLabel.text = String(rgb.g)
-    blueLabel.text = String(rgb.b)
-    scoreLabel.text = String(game.score)
-    roundLabel.text = String(game.round)
-  }
+    
+    @IBAction func aSliderMoved(sender: UISlider) {
+        rgb.r = Int(redSlider.value)
+        rgb.g = Int(greenSlider.value)
+        rgb.b = Int(blueSlider.value)
+        game.currentRGB = rgb
+        updateView()
+    }
+    
+    @IBAction func showAlert(sender: AnyObject) {
+        game.calculatePoints()
+        let alert = UIAlertController(title: game.title, message: game.message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: {
+            action in
+            self.game.startNewRound()
+            self.updateView()
+        })
+        
+        alert.addAction(action)
+        
+        present(alert, animated: true, completion: nil)
+        
+    }
+    
+    @IBAction func startOver(sender: AnyObject) {
+        game.startNewGame()
+        updateView()
+    }
+    
+    func updateView() {
+        guessLabel.backgroundColor = UIColor(rgbStruct: game.currentRGB)
+        targetLabel.backgroundColor = UIColor(rgbStruct: game.targetRGB)
+        redLabel.text = String(rgb.r)
+        greenLabel.text = String(rgb.g)
+        blueLabel.text = String(rgb.b)
+        scoreLabel.text = String(game.score)
+        roundLabel.text = String(game.round)
+        blueSlider.value = Float(game.currentRGB.b)
+        greenSlider.value = Float(game.currentRGB.g)
+        redSlider.value = Float(game.currentRGB.r)
+        
+    }
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    game.startNewGame()
     updateView()
   }
 }

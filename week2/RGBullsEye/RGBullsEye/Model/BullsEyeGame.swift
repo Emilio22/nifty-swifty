@@ -28,10 +28,10 @@ let RANGE_MAX = 255
 
 struct BullsEyeGame {
     
-    var currentValue = 0
-    var currentRGB = RGB(r: 127, g: 127, b: 127)
+    var currentRGB = RGB(r: INITIAL_VAL,
+                         g: INITIAL_VAL,
+                         b: INITIAL_VAL)
         
-    var targetValue = 0
     var targetRGB = RGB(r: 0, g: 0, b: 0)
     
     
@@ -41,10 +41,6 @@ struct BullsEyeGame {
     var title : String?
     var message : String?
     
-    var difference: Int {
-        return abs(targetValue - currentValue)
-    }
-   
     
     mutating func startNewGame(){
         score = 0
@@ -54,16 +50,21 @@ struct BullsEyeGame {
     
     mutating func startNewRound(){
         round += 1
-        targetValue = Int.random(in: 1...100)
-        currentValue = 50
+        targetRGB = RGB(r: Int.random(in: RANGE_MIN...RANGE_MAX),
+                        g: Int.random(in: RANGE_MIN...RANGE_MAX),
+                        b: Int.random(in: RANGE_MIN...RANGE_MAX))
         
+        currentRGB = RGB(r: INITIAL_VAL,
+                         g: INITIAL_VAL,
+                         b: INITIAL_VAL)
         
     }
     
     mutating func calculatePoints(){
-        
-        var points = 100 - difference
-        
+
+        let difference = (currentRGB.difference(target: targetRGB) * 100)
+        var points = Int(100 - difference)
+
         if difference == 0 {
           title = "Perfect!"
           points += 100
