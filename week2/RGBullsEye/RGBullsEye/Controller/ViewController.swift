@@ -38,11 +38,15 @@ class ViewController: UIViewController {
   @IBOutlet weak var roundLabel: UILabel!
   @IBOutlet weak var scoreLabel: UILabel!
   
-  let game = BullsEyeGame()
+    
+  var game = BullsEyeGame()
   var rgb = RGB()
   
   @IBAction func aSliderMoved(sender: UISlider) {
-
+    game.r = Int(redSlider.value)
+    game.g = Int(greenSlider.value)
+    game.b = Int(blueSlider.value)
+    updateView()
   }
   
   @IBAction func showAlert(sender: AnyObject) {
@@ -54,7 +58,10 @@ class ViewController: UIViewController {
   }
   
   func updateView() {
-
+    targetLabel.backgroundColor = UIColor(rgbStruct: game.currentRGB)
+    redLabel.text = String(game.r)
+    greenLabel.text = String(game.g)
+    blueLabel.text = String(game.b)
   }
   
   override func viewDidLoad() {
