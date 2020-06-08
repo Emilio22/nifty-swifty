@@ -43,9 +43,10 @@ class ViewController: UIViewController {
   var rgb = RGB()
   
   @IBAction func aSliderMoved(sender: UISlider) {
-    game.r = Int(redSlider.value)
-    game.g = Int(greenSlider.value)
-    game.b = Int(blueSlider.value)
+    rgb.r = Int(redSlider.value)
+    rgb.g = Int(greenSlider.value)
+    rgb.b = Int(blueSlider.value)
+    game.currentRGB = rgb
     updateView()
   }
   
@@ -58,14 +59,17 @@ class ViewController: UIViewController {
   }
   
   func updateView() {
-    targetLabel.backgroundColor = UIColor(rgbStruct: game.currentRGB)
-    redLabel.text = String(game.r)
-    greenLabel.text = String(game.g)
-    blueLabel.text = String(game.b)
+    guessLabel.backgroundColor = UIColor(rgbStruct: game.currentRGB)
+    redLabel.text = String(rgb.r)
+    greenLabel.text = String(rgb.g)
+    blueLabel.text = String(rgb.b)
+    scoreLabel.text = String(game.score)
+    roundLabel.text = String(game.round)
   }
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    updateView()
   }
 }
 

@@ -22,18 +22,19 @@
 
 import Foundation
 
+let INITIAL_VAL = 127
+let RANGE_MIN = 1
+let RANGE_MAX = 255
+
 struct BullsEyeGame {
     
     var currentValue = 0
-    var r = 127
-    var g = 127
-    var b = 127
-    
-    var currentRGB : RGB {
-        return RGB(r: r, g: g, b: b)
-    }
+    var currentRGB = RGB(r: 127, g: 127, b: 127)
         
     var targetValue = 0
+    var targetRGB = RGB(r: 0, g: 0, b: 0)
+    
+    
     var score = 0
     var round = 0
     
@@ -55,6 +56,8 @@ struct BullsEyeGame {
         round += 1
         targetValue = Int.random(in: 1...100)
         currentValue = 50
+        
+        
     }
     
     mutating func calculatePoints(){
