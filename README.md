@@ -1,8 +1,9 @@
-## Name
-Emilio Rodriguez
+## Who am I?
 
-## Discord
-TM: Emilio
+![alt text](img/profile.jpeg)
+
+Name: Emilio Rodriguez
+Discord: TM: Emilio
 
 ## Where
 From the United States.  Currently, residing in St. Louis, Missouri.
