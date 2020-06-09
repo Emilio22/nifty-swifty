@@ -24,6 +24,7 @@
 		352A67A220D171EA00D5BF05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		352A67A420D171EA00D5BF05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		850BF8FB248DE5CB00E3EF74 /* BullsEyeGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullsEyeGame.swift; sourceTree = "<group>"; };
+		855E9910248F04630071ADA2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +41,7 @@
 		352A678C20D171E800D5BF05 = {
 			isa = PBXGroup;
 			children = (
+				855E9910248F04630071ADA2 /* README.md */,
 				352A679720D171E800D5BF05 /* BullsEye */,
 				352A679620D171E800D5BF05 /* Products */,
 			);
