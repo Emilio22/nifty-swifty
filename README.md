@@ -1,6 +1,6 @@
 ## Who am I?
 
-![alt text](img/profilepic2.jpeg)
+![alt text](img/profilepic2.JPG)
 
 Name: Emilio Rodriguez
 Discord: TM: Emilio
