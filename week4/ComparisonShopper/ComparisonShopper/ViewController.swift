@@ -53,6 +53,12 @@ class ViewController: UIViewController {
             priceLabelRight.alpha = 0
             roomLabelRight.alpha = 0
         } else {
+            
+            titleLabelRight.alpha = 1
+            imageViewRight.alpha = 1
+            priceLabelRight.alpha = 1
+            roomLabelRight.alpha = 1
+            
             titleLabelRight.text! = house2!.address!
             priceLabelRight.text! = house2!.price!
             roomLabelRight.text! = house2!.bedrooms!
