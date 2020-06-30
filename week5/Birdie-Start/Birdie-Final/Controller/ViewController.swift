@@ -41,7 +41,8 @@ class ViewController: UIViewController {
             let post = TextPost(textBody: alertController.textFields![1].text,
                                 userName: alertController.textFields![0].text!,
                                 timestamp: Date())
-            
+            MediaPostsHandler.shared.addTextPost(textPost: post)
+            self.tableview.reloadData()
             
         })
         alertController.addAction(action)
