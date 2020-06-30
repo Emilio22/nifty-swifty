@@ -27,8 +27,25 @@ class ViewController: UIViewController {
         
     }
 
+    
     @IBAction func didPressCreateTextPostButton(_ sender: Any) {
-
+        let alertController = UIAlertController(title: "Post Text", message: "What would you like to post?", preferredStyle: .alert)
+        alertController.addTextField { (textField) in
+            textField.placeholder = "Username"
+        }
+        alertController.addTextField { (textField) in
+            textField.placeholder = "body"
+        }
+        let action = UIAlertAction(title: "Post", style: .default, handler:{
+            action in
+            let post = TextPost(textBody: alertController.textFields![1].text,
+                                userName: alertController.textFields![0].text!,
+                                timestamp: Date())
+            
+            
+        })
+        alertController.addAction(action)
+        present(alertController,animated: true,completion: nil)
     }
 
     @IBAction func didPressCreateImagePostButton(_ sender: Any) {
