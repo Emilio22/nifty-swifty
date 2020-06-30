@@ -45,21 +45,25 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy hh:mm"
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "TextPost", for: indexPath)
         if let post = MediaPostsHandler.shared.mediaPosts[indexPath.row] as? ImagePost{
             let cell = tableView.dequeueReusableCell(withIdentifier: "ImagePost", for: indexPath)
             if let imageCell = cell as? ImagePostCell{
                 imageCell.nameLabel.text = post.userName
                 imageCell.postLabel.text = post.textBody
-                imageCell.timeLabel.text = "the time"
+                imageCell.timeLabel.text = dateFormatter.string(from: post.timestamp)
                 imageCell.postedImage.image = post.image
                 return imageCell
             }
         } else {
+            let post = MediaPostsHandler.shared.mediaPosts[indexPath.row]
             if let textCell = cell as? TextPostCell {
-                textCell.nameLabel.text = MediaPostsHandler.shared.mediaPosts[indexPath.row].userName
-                textCell.postLabel.text = MediaPostsHandler.shared.mediaPosts[indexPath.row].textBody
-                textCell.timeLabel.text = "the time"
+                textCell.nameLabel.text = post.userName
+                textCell.postLabel.text = post.textBody
+                textCell.timeLabel.text = dateFormatter.string(from: post.timestamp)
                 return textCell
             }
         }
