@@ -136,8 +136,8 @@
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="145" height="164"/>
                                         <connections>
+                                            <outlet property="nameLabel" destination="aWe-yu-Xgc" id="Lqp-lu-ddC"/>
                                             <outlet property="pokemonImage" destination="1Xl-EM-0wG" id="Ud8-XU-Ve1"/>
-                                            <outlet property="pokemonName" destination="aWe-yu-Xgc" id="Lqp-lu-ddC"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -162,6 +162,9 @@
                     <tabBarItem key="tabBarItem" title="Compact View" image="unselected_down" selectedImage="selected_down" id="Uyi-xz-Er8">
                         <color key="badgeColor" red="1" green="0.34509803919999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBarItem>
+                    <connections>
+                        <outlet property="collectionView" destination="cLA-Tt-C8S" id="dAe-qJ-jfH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rbO-wi-aa4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

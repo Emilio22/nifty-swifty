@@ -38,6 +38,6 @@ class PokemonCell: UICollectionViewCell {
   
   @IBOutlet weak var pokemonImage: UIImageView!
   
-  @IBOutlet weak var pokemonName: UILabel!
+  @IBOutlet weak var nameLabel: UILabel!
   
 }

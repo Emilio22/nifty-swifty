@@ -32,13 +32,12 @@
 
 import Foundation
 
-struct Pokemon {
+struct Pokemon: Hashable {
   let pokemonId : Int
   let pokemonName : String
   let baseExperience : Int
   let weight : Int
   let height : Int
-  
   
 }
 

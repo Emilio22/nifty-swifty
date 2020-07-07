@@ -33,22 +33,53 @@
 import UIKit
 
 class CompactViewController: UIViewController {
+  
+  @IBOutlet weak var collectionView: UICollectionView!
+  var dataSource: UICollectionViewDiffableDataSource<Section,Pokemon>!
+  var pokemon = PokemonGenerator.shared.generatePokemons()
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+        
+    collectionView.collectionViewLayout = configureLayout()
+    configureDataSource()
+  }
+  
+  
+  func configureLayout() -> UICollectionViewLayout {
+      let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.33), heightDimension: .fractionalHeight(1))
+      let item = NSCollectionLayoutItem(layoutSize: itemSize)
+      item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
+      
+      let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.2))
+      let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
+      let section = NSCollectionLayoutSection(group: group)
+      return UICollectionViewCompositionalLayout(section: section)
+      
+  }
+  
+  func configureDataSource() {
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    dataSource = UICollectionViewDiffableDataSource<Section, Pokemon>(collectionView: self.collectionView, cellProvider: { (collectionView, indexPath, pokemon) -> UICollectionViewCell? in
+      
+      guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PokemonCell.reuseIdentifier, for: indexPath) as? PokemonCell else {
+        fatalError("Cannot create new cell")
+      }
+      
+      cell.nameLabel.text = pokemon.pokemonName
+      let pokemonImage = UIImage(named:String(pokemon.pokemonId))
+      cell.pokemonImage.image = pokemonImage
+      
+      return cell
+    })
+    
+    var initialSnapshot = NSDiffableDataSourceSnapshot<Section, Pokemon>()
+    initialSnapshot.appendSections([.main])
+    initialSnapshot.appendItems(pokemon)
+    
+    dataSource.apply(initialSnapshot, animatingDifferences: false)
+    
+  }
+  
 }

@@ -32,11 +32,17 @@
 
 import Foundation
 
+enum Section {
+  case main
+}
+
 class PokemonGenerator {
   
   public static let shared = PokemonGenerator()
   
   private init () { }
+  
+  
   
   func generatePokemons() -> [Pokemon] {
     var pokemons: [Pokemon] = []
