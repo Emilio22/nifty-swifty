@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -62,7 +63,7 @@
         <!--Compact View-->
         <scene sceneID="jfm-d7-A99">
             <objects>
-                <viewController id="aiT-yU-3Sz" sceneMemberID="viewController">
+                <viewController id="aiT-yU-3Sz" customClass="CompactViewController" customModule="Pokedex_starter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Zbv-Ge-Jnv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -87,16 +88,74 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="ezc-7R-jLs">
                                 <rect key="frame" x="0.0" y="56" width="375" height="562"/>
                             </imageView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cLA-Tt-C8S">
+                                <rect key="frame" x="0.0" y="56" width="375" height="562"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rp7-A2-TY0">
+                                    <size key="itemSize" width="145" height="164"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PokemonCell" id="mde-bR-Rwl" customClass="PokemonCell" customModule="Pokedex_starter" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="145" height="164"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="q4n-PX-2vU">
+                                            <rect key="frame" x="0.0" y="0.0" width="145" height="164"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Uwg-cf-TBA">
+                                                    <rect key="frame" x="0.0" y="0.0" width="145" height="164"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="1Xl-EM-0wG">
+                                                            <rect key="frame" x="12.5" y="0.0" width="120" height="129.5"/>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aWe-yu-Xgc">
+                                                            <rect key="frame" x="0.0" y="131.5" width="145" height="32.5"/>
+                                                            <color key="backgroundColor" red="0.80442374940000005" green="0.39866793160000003" blue="0.34803804760000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="aWe-yu-Xgc" firstAttribute="height" secondItem="1Xl-EM-0wG" secondAttribute="height" multiplier="0.25" id="RuF-v7-foR"/>
+                                                        <constraint firstItem="aWe-yu-Xgc" firstAttribute="centerX" secondItem="Uwg-cf-TBA" secondAttribute="centerX" id="myr-OV-9Rd"/>
+                                                        <constraint firstAttribute="trailing" secondItem="aWe-yu-Xgc" secondAttribute="trailing" id="pKU-UY-BAX"/>
+                                                        <constraint firstItem="aWe-yu-Xgc" firstAttribute="leading" secondItem="Uwg-cf-TBA" secondAttribute="leading" id="x5Q-Iw-Ufb"/>
+                                                    </constraints>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="Uwg-cf-TBA" secondAttribute="trailing" id="aQ0-3c-7aa"/>
+                                                <constraint firstItem="Uwg-cf-TBA" firstAttribute="top" secondItem="q4n-PX-2vU" secondAttribute="top" id="dLF-5J-8Hv"/>
+                                                <constraint firstAttribute="bottom" secondItem="Uwg-cf-TBA" secondAttribute="bottom" id="vWT-9E-APj"/>
+                                                <constraint firstItem="Uwg-cf-TBA" firstAttribute="leading" secondItem="q4n-PX-2vU" secondAttribute="leading" id="xj9-oR-Ust"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="145" height="164"/>
+                                        <connections>
+                                            <outlet property="pokemonImage" destination="1Xl-EM-0wG" id="Ud8-XU-Ve1"/>
+                                            <outlet property="pokemonName" destination="aWe-yu-Xgc" id="Lqp-lu-ddC"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="cLA-Tt-C8S" firstAttribute="top" secondItem="uRK-MR-EZD" secondAttribute="bottom" id="2Vj-aC-rhr"/>
                             <constraint firstItem="juZ-AC-nhh" firstAttribute="trailing" secondItem="ezc-7R-jLs" secondAttribute="trailing" id="3fY-um-jw7"/>
                             <constraint firstItem="ezc-7R-jLs" firstAttribute="leading" secondItem="juZ-AC-nhh" secondAttribute="leading" id="6ZZ-KK-9JX"/>
                             <constraint firstItem="juZ-AC-nhh" firstAttribute="trailing" secondItem="uRK-MR-EZD" secondAttribute="trailing" id="6p2-hk-mrB"/>
                             <constraint firstItem="uRK-MR-EZD" firstAttribute="leading" secondItem="juZ-AC-nhh" secondAttribute="leading" id="ETr-KJ-RPR"/>
                             <constraint firstItem="juZ-AC-nhh" firstAttribute="bottom" secondItem="ezc-7R-jLs" secondAttribute="bottom" id="Hmz-Oo-7tb"/>
+                            <constraint firstItem="cLA-Tt-C8S" firstAttribute="leading" secondItem="juZ-AC-nhh" secondAttribute="leading" id="R3k-VZ-OgE"/>
                             <constraint firstItem="uRK-MR-EZD" firstAttribute="top" secondItem="juZ-AC-nhh" secondAttribute="top" id="brE-6N-XyE"/>
+                            <constraint firstItem="juZ-AC-nhh" firstAttribute="trailing" secondItem="cLA-Tt-C8S" secondAttribute="trailing" id="hug-Sh-TE2"/>
                             <constraint firstItem="ezc-7R-jLs" firstAttribute="top" secondItem="uRK-MR-EZD" secondAttribute="bottom" id="kEK-Ew-Wqq"/>
+                            <constraint firstItem="juZ-AC-nhh" firstAttribute="bottom" secondItem="cLA-Tt-C8S" secondAttribute="bottom" id="yrC-lt-yJB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="juZ-AC-nhh"/>
                     </view>
@@ -130,6 +189,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="1" width="120" height="120"/>
         <image name="bg" width="1920" height="1200"/>
         <image name="selected_down" width="23" height="23"/>
         <image name="selected_up" width="23" height="23"/>
