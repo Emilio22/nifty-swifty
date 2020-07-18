@@ -16,6 +16,8 @@ class SandwichViewController: UITableViewController, SandwichDataSource {
   let searchController = UISearchController(searchResultsController: nil)
   var sandwiches = [SandwichData]()
   var filteredSandwiches = [SandwichData]()
+  
+  let defaults = UserDefaults.standard
 
   required init?(coder: NSCoder) {
     super.init(coder: coder)
@@ -36,6 +38,8 @@ class SandwichViewController: UITableViewController, SandwichDataSource {
     navigationItem.searchController = searchController
     definesPresentationContext = true
     searchController.searchBar.scopeButtonTitles = SauceAmount.allCases.map { $0.rawValue }
+    // set selected scope of search bar to last left selection stored on user defaults
+    searchController.searchBar.selectedScopeButtonIndex = defaults.integer(forKey: "SelectedScope")
     searchController.searchBar.delegate = self
   }
 
@@ -74,9 +78,12 @@ class SandwichViewController: UITableViewController, SandwichDataSource {
   
   func filterContentForSearchText(_ searchText: String,
                                   sauceAmount: SauceAmount? = nil) {
+    
     filteredSandwiches = sandwiches.filter { (sandwhich: SandwichData) -> Bool in
+      
       let doesSauceAmountMatch = sauceAmount == .any || sandwhich.sauceAmount == sauceAmount
 
+      
       if isSearchBarEmpty {
         return doesSauceAmountMatch
       } else {
@@ -135,6 +142,7 @@ extension SandwichViewController: UISearchResultsUpdating {
 extension SandwichViewController: UISearchBarDelegate {
   func searchBar(_ searchBar: UISearchBar,
       selectedScopeButtonIndexDidChange selectedScope: Int) {
+    defaults.set(selectedScope, forKey: "SelectedScope")
     let sauceAmount = SauceAmount(rawValue:
       searchBar.scopeButtonTitles![selectedScope])
     filterContentForSearchText(searchBar.text!, sauceAmount: sauceAmount)
