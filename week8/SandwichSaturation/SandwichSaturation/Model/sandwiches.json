@@ -1,5 +1,8 @@
 [
-  { "name": "Bagel Toast", "sauceAmount": "None", "imageName": "sandwich1" },
+  { "name": "Bagel Toast",
+    "sauceAmount": "None",
+    "imageName": "sandwich1" },
+  
   { "name": "Bologna", "sauceAmount": "None", "imageName": "sandwich2" },
   { "name": "Breakfast Roll", "sauceAmount": "None", "imageName": "sandwich3" },
   { "name": "Club", "sauceAmount": "None", "imageName": "sandwich4" },

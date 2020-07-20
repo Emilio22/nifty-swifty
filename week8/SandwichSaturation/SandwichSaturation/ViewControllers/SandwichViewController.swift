@@ -6,6 +6,7 @@
 //  Copyright © 2020 Jeff Rames. All rights reserved.
 //
 
+import Combine
 import UIKit
 
 protocol SandwichDataSource {
@@ -47,18 +48,21 @@ class SandwichViewController: UITableViewController, SandwichDataSource {
     super.viewWillAppear(animated)
   }
   
+  
   func loadSandwiches() {
-    let sandwichArray = [SandwichData(name: "Bagel Toast", sauceAmount: .none, imageName: "sandwich1"),
-                         SandwichData(name: "Bologna", sauceAmount: .none, imageName: "sandwich2"),
-                         SandwichData(name: "Breakfast Roll", sauceAmount: .none, imageName: "sandwich3"),
-                         SandwichData(name: "Club", sauceAmount: .none, imageName: "sandwich4"),
-                         SandwichData(name: "Sub", sauceAmount: .none, imageName: "sandwich5"),
-                         SandwichData(name: "Steak", sauceAmount: .tooMuch, imageName: "sandwich6"),
-                         SandwichData(name: "Dunno", sauceAmount: .tooMuch, imageName: "sandwich7"),
-                         SandwichData(name: "Torta", sauceAmount: .tooMuch, imageName: "sandwich8"),
-                         SandwichData(name: "Ham", sauceAmount: .tooMuch, imageName: "sandwich9"),
-                         SandwichData(name: "Lettuce", sauceAmount: .tooMuch, imageName: "sandwich10")]
-    sandwiches.append(contentsOf: sandwichArray)
+    
+    guard let jsonURL = Bundle.main.url(forResource: "sandwiches", withExtension: "json") else {
+      print("Could not find json file")
+      return
+    }
+    
+    let decoder = JSONDecoder()
+    do {
+      let sandwichData = try Data(contentsOf: jsonURL)
+      sandwiches = try decoder.decode([SandwichData].self, from: sandwichData)
+    } catch let error {
+      print(error)
+    }
   }
 
   func saveSandwich(_ sandwich: SandwichData) {
