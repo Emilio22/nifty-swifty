@@ -8,22 +8,34 @@
 
 import Combine
 import UIKit
+import CoreData
 
 protocol SandwichDataSource {
   func saveSandwich(_: SandwichData)
 }
 
 class SandwichViewController: UITableViewController, SandwichDataSource {
+  
+  private let appDelegate = UIApplication.shared.delegate as! AppDelegate
+  private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+  
   let searchController = UISearchController(searchResultsController: nil)
-  var sandwiches = [SandwichData]()
+  
+  private var fetchedSandwichesController: NSFetchedResultsController<Sandwich>!
+  
+  var sandwiches = [Sandwich]()
+  
+  var sandwichesData = [SandwichData]()
   var filteredSandwiches = [SandwichData]()
   
   let defaults = UserDefaults.standard
 
   required init?(coder: NSCoder) {
     super.init(coder: coder)
-    
-    loadSandwiches()
+  
+    if !(defaults.bool(forKey: "isLoaded")){
+      loadSandwiches()
+    }
   }
   
   override func viewDidLoad() {
@@ -46,28 +58,61 @@ class SandwichViewController: UITableViewController, SandwichDataSource {
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
+    refresh()
   }
   
   
   func loadSandwiches() {
-    
+    //grab json url
     guard let jsonURL = Bundle.main.url(forResource: "sandwiches", withExtension: "json") else {
       print("Could not find json file")
       return
     }
     
+    //Decode JSON into sandwichData array
     let decoder = JSONDecoder()
     do {
       let sandwichData = try Data(contentsOf: jsonURL)
-      sandwiches = try decoder.decode([SandwichData].self, from: sandwichData)
+      sandwichesData = try decoder.decode([SandwichData].self, from: sandwichData)
     } catch let error {
       print(error)
     }
+    
+    //save data into core data
+    sandwichesData.forEach { (data) in
+      let sandwich = Sandwich(entity: Sandwich.entity(), insertInto: context)
+      let sauceAmount = SauceAmountModel(entity: SauceAmountModel.entity(), insertInto: context)
+      sauceAmount.sauceAmountString = data.sauceAmount.rawValue
+      sandwich.name = data.name
+      sandwich.imageName = data.imageName
+      sandwich.sauceAmount = sauceAmount
+
+      appDelegate.saveContext()
+    }
+    defaults.set(true, forKey: "isLoaded")
   }
 
-  func saveSandwich(_ sandwich: SandwichData) {
-    sandwiches.append(sandwich)
+  func saveSandwich(_ data: SandwichData) {
+    let sandwich = Sandwich(entity: Sandwich.entity(), insertInto: context)
+    let sauceAmount = SauceAmountModel(entity: SauceAmountModel.entity(), insertInto: context)
+    sauceAmount.sauceAmountString = data.sauceAmount.rawValue
+    sandwich.name = data.name
+    sandwich.imageName = data.imageName
+    sandwich.sauceAmount = sauceAmount
+
+    print(sandwich)
+    appDelegate.saveContext()
+    refresh()
     tableView.reloadData()
+  }
+  
+  private func refresh() {
+    let request = Sandwich.fetchRequest() as NSFetchRequest<Sandwich>
+    do {
+      sandwiches = try context.fetch(request)
+    } catch let error as NSError {
+      print("Could not fetch. \(error), \(error.userInfo)")
+    }
   }
 
   @objc
@@ -83,7 +128,7 @@ class SandwichViewController: UITableViewController, SandwichDataSource {
   func filterContentForSearchText(_ searchText: String,
                                   sauceAmount: SauceAmount? = nil) {
     
-    filteredSandwiches = sandwiches.filter { (sandwhich: SandwichData) -> Bool in
+    filteredSandwiches = sandwichesData.filter { (sandwhich: SandwichData) -> Bool in
       
       let doesSauceAmountMatch = sauceAmount == .any || sandwhich.sauceAmount == sauceAmount
 
@@ -112,20 +157,19 @@ class SandwichViewController: UITableViewController, SandwichDataSource {
   }
 
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return isFiltering ? filteredSandwiches.count : sandwiches.count
+
+    return sandwiches.count
   }
 
-  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {    
     guard let cell = tableView.dequeueReusableCell(withIdentifier: "sandwichCell", for: indexPath) as? SandwichCell
       else { return UITableViewCell() }
     
-    let sandwich = isFiltering ?
-      filteredSandwiches[indexPath.row] :
-      sandwiches[indexPath.row]
+    let sandwich = sandwiches[indexPath.row]
 
     cell.thumbnail.image = UIImage.init(imageLiteralResourceName: sandwich.imageName)
     cell.nameLabel.text = sandwich.name
-    cell.sauceLabel.text = sandwich.sauceAmount.description
+    cell.sauceLabel.text = sandwich.sauceAmount.sauceAmountString
 
     return cell
   }
