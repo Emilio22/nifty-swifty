@@ -18,6 +18,23 @@ extension SauceAmountModel {
     }
 
     @NSManaged public var sauceAmountString: String
-    @NSManaged public var sandwich: Sandwich
+    @NSManaged public var sandwich: NSSet
+
+}
+
+// MARK: Generated accessors for sandwich
+extension SauceAmountModel {
+
+    @objc(addSandwichObject:)
+    @NSManaged public func addToSandwich(_ value: Sandwich)
+
+    @objc(removeSandwichObject:)
+    @NSManaged public func removeFromSandwich(_ value: Sandwich)
+
+    @objc(addSandwich:)
+    @NSManaged public func addToSandwich(_ values: NSSet)
+
+    @objc(removeSandwich:)
+    @NSManaged public func removeFromSandwich(_ values: NSSet)
 
 }
