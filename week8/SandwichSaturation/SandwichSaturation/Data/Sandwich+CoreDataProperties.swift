@@ -19,7 +19,7 @@ extension Sandwich {
 
     @NSManaged public var name: String
     @NSManaged public var imageName: String
-    @NSManaged public var sauceAmount: NSSet?
+    @NSManaged public var sauceAmount: NSSet
 
 }
 

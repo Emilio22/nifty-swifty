@@ -6,13 +6,11 @@
         <relationship name="sauceAmount" toMany="YES" deletionRule="Nullify" destinationEntity="SauceAmountModel" inverseName="sandwich" inverseEntity="SauceAmountModel"/>
     </entity>
     <entity name="SauceAmountModel" representedClassName=".SauceAmountModel" syncable="YES">
-        <attribute name="either" attributeType="String"/>
-        <attribute name="none" attributeType="String"/>
-        <attribute name="toomuch" attributeType="String"/>
+        <attribute name="sauceAmount" attributeType="String"/>
         <relationship name="sandwich" maxCount="1" deletionRule="Nullify" destinationEntity="Sandwich" inverseName="sauceAmount" inverseEntity="Sandwich"/>
     </entity>
     <elements>
-        <element name="Sandwich" positionX="-54" positionY="-9" width="128" height="88"/>
-        <element name="SauceAmountModel" positionX="-36" positionY="27" width="128" height="103"/>
+        <element name="Sandwich" positionX="-284.8125" positionY="50.4921875" width="128" height="88"/>
+        <element name="SauceAmountModel" positionX="-36" positionY="27" width="128" height="73"/>
     </elements>
 </model>

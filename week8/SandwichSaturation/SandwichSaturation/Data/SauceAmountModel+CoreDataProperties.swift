@@ -2,7 +2,7 @@
 //  SauceAmountModel+CoreDataProperties.swift
 //  SandwichSaturation
 //
-//  Created by Emilio Rodriguez on 7/20/20.
+//  Created by Emilio Rodriguez on 7/21/20.
 //  Copyright © 2020 Jeff Rames. All rights reserved.
 //
 //
@@ -17,9 +17,7 @@ extension SauceAmountModel {
         return NSFetchRequest<SauceAmountModel>(entityName: "SauceAmountModel")
     }
 
-    @NSManaged public var either: String
-    @NSManaged public var none: String
-    @NSManaged public var toomuch: String
+    @NSManaged public var sauceAmount: String?
     @NSManaged public var sandwich: Sandwich?
 
 }
