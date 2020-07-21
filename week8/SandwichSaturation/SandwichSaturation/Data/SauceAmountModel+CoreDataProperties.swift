@@ -17,7 +17,7 @@ extension SauceAmountModel {
         return NSFetchRequest<SauceAmountModel>(entityName: "SauceAmountModel")
     }
 
-    @NSManaged public var sauceAmount: String?
-    @NSManaged public var sandwich: Sandwich?
+    @NSManaged public var sauceAmountString: String
+    @NSManaged public var sandwich: Sandwich
 
 }

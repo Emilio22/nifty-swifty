@@ -6,7 +6,7 @@
         <relationship name="sauceAmount" toMany="YES" deletionRule="Nullify" destinationEntity="SauceAmountModel" inverseName="sandwich" inverseEntity="SauceAmountModel"/>
     </entity>
     <entity name="SauceAmountModel" representedClassName=".SauceAmountModel" syncable="YES">
-        <attribute name="sauceAmount" attributeType="String"/>
+        <attribute name="sauceAmountString" attributeType="String"/>
         <relationship name="sandwich" maxCount="1" deletionRule="Nullify" destinationEntity="Sandwich" inverseName="sauceAmount" inverseEntity="Sandwich"/>
     </entity>
     <elements>
