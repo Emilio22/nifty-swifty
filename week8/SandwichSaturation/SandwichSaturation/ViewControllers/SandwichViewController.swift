@@ -29,6 +29,8 @@ class SandwichViewController: UITableViewController, SandwichDataSource {
   var filteredSandwiches = [SandwichData]()
   
   let defaults = UserDefaults.standard
+  
+  var query = ""
 
   required init?(coder: NSCoder) {
     super.init(coder: coder)
@@ -108,6 +110,11 @@ class SandwichViewController: UITableViewController, SandwichDataSource {
   
   private func refresh() {
     let request = Sandwich.fetchRequest() as NSFetchRequest<Sandwich>
+    
+    if !query.isEmpty {
+      request.predicate = NSPredicate(format: "name CONTAINS[cd] %@", query )
+    }
+    
     do {
       sandwiches = try context.fetch(request)
     } catch let error as NSError {
@@ -125,30 +132,19 @@ class SandwichViewController: UITableViewController, SandwichDataSource {
     return searchController.searchBar.text?.isEmpty ?? true
   }
   
-  func filterContentForSearchText(_ searchText: String,
-                                  sauceAmount: SauceAmount? = nil) {
-    
-    filteredSandwiches = sandwichesData.filter { (sandwhich: SandwichData) -> Bool in
-      
-      let doesSauceAmountMatch = sauceAmount == .any || sandwhich.sauceAmount == sauceAmount
-
-      
-      if isSearchBarEmpty {
-        return doesSauceAmountMatch
-      } else {
-        return doesSauceAmountMatch && sandwhich.name.lowercased()
-          .contains(searchText.lowercased())
-      }
+  func filterContentForSearchText(_ searchText: String, sauceAmount: SauceAmount? = nil) {
+    if isSearchBarEmpty {
+      query = ""
+    } else {
+      query = searchText
     }
-    
+    refresh()
     tableView.reloadData()
   }
   
   var isFiltering: Bool {
-    let searchBarScopeIsFiltering =
-      searchController.searchBar.selectedScopeButtonIndex != 0
-    return searchController.isActive &&
-      (!isSearchBarEmpty || searchBarScopeIsFiltering)
+    let searchBarScopeIsFiltering = searchController.searchBar.selectedScopeButtonIndex != 0
+    return searchController.isActive && (!isSearchBarEmpty || searchBarScopeIsFiltering)
   }
   
   // MARK: - Table View
@@ -161,7 +157,7 @@ class SandwichViewController: UITableViewController, SandwichDataSource {
     return sandwiches.count
   }
 
-  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {    
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: "sandwichCell", for: indexPath) as? SandwichCell
       else { return UITableViewCell() }
     
@@ -178,9 +174,9 @@ class SandwichViewController: UITableViewController, SandwichDataSource {
 // MARK: - UISearchResultsUpdating
 extension SandwichViewController: UISearchResultsUpdating {
   func updateSearchResults(for searchController: UISearchController) {
+    
     let searchBar = searchController.searchBar
-    let sauceAmount = SauceAmount(rawValue:
-      searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex])
+    let sauceAmount = SauceAmount(rawValue: searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex])
 
     filterContentForSearchText(searchBar.text!, sauceAmount: sauceAmount)
   }
@@ -188,8 +184,8 @@ extension SandwichViewController: UISearchResultsUpdating {
 
 // MARK: - UISearchBarDelegate
 extension SandwichViewController: UISearchBarDelegate {
-  func searchBar(_ searchBar: UISearchBar,
-      selectedScopeButtonIndexDidChange selectedScope: Int) {
+  func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+    
     defaults.set(selectedScope, forKey: "SelectedScope")
     let sauceAmount = SauceAmount(rawValue:
       searchBar.scopeButtonTitles![selectedScope])
