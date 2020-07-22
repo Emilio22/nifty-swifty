@@ -31,6 +31,7 @@ class SandwichViewController: UITableViewController, SandwichDataSource {
   let defaults = UserDefaults.standard
   
   var query = ""
+  var selectedSauce : SauceAmount?
 
   required init?(coder: NSCoder) {
     super.init(coder: coder)
@@ -88,7 +89,7 @@ class SandwichViewController: UITableViewController, SandwichDataSource {
       sandwich.name = data.name
       sandwich.imageName = data.imageName
       sandwich.sauceAmount = sauceAmount
-
+      
       appDelegate.saveContext()
     }
     defaults.set(true, forKey: "isLoaded")
@@ -102,7 +103,6 @@ class SandwichViewController: UITableViewController, SandwichDataSource {
     sandwich.imageName = data.imageName
     sandwich.sauceAmount = sauceAmount
 
-    print(sandwich)
     appDelegate.saveContext()
     refresh()
     tableView.reloadData()
@@ -110,9 +110,24 @@ class SandwichViewController: UITableViewController, SandwichDataSource {
   
   private func refresh() {
     let request = Sandwich.fetchRequest() as NSFetchRequest<Sandwich>
+    let sauceString = selectedSauce?.rawValue
     
-    if !query.isEmpty {
-      request.predicate = NSPredicate(format: "name CONTAINS[cd] %@", query )
+    
+    
+    if isFiltering {
+      if selectedSauce == SauceAmount.any {
+        request.predicate = NSPredicate(format: "name CONTAINS[cd] %@", query)
+      } else if !(query.isEmpty){
+        request.predicate = NSCompoundPredicate(type: .and,
+                                                subpredicates: [
+                                                  NSPredicate(format: "name CONTAINS[cd] %@", query),
+                                                  NSPredicate(format: "sauceAmount.sauceAmountString == %@", sauceString! )
+          ]
+        )
+      } else {
+        request.predicate = NSPredicate(format: "sauceAmount.sauceAmountString == %@", sauceString! )
+      }
+      
     }
     
     do {
@@ -138,6 +153,7 @@ class SandwichViewController: UITableViewController, SandwichDataSource {
     } else {
       query = searchText
     }
+    selectedSauce = sauceAmount
     refresh()
     tableView.reloadData()
   }
@@ -187,8 +203,8 @@ extension SandwichViewController: UISearchBarDelegate {
   func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
     
     defaults.set(selectedScope, forKey: "SelectedScope")
-    let sauceAmount = SauceAmount(rawValue:
-      searchBar.scopeButtonTitles![selectedScope])
+    
+    let sauceAmount = SauceAmount(rawValue: searchBar.scopeButtonTitles![selectedScope])
     filterContentForSearchText(searchBar.text!, sauceAmount: sauceAmount)
   }
 }
