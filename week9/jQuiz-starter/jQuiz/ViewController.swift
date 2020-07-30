@@ -45,13 +45,14 @@ class ViewController: UIViewController {
         Networking.sharedInstance.getRandomCategory(completion: { (categoryId) in
             
             guard let id = categoryId else {
-                print("oops")
                 return
             }
+            print(id)
             
             Networking.sharedInstance.getAllCluesInCategory(categoryId: id) { (clues) in
                 self.clues = clues
                 self.correctAnswerClue = clues.randomElement()
+                print(self.correctAnswerClue?.answer ?? "oops")
                 self.setUpView()
             }
         })
@@ -99,7 +100,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        if correctAnswerClue?.answer == clues[indexPath.row].answer {
+            points += correctAnswerClue?.value ?? 0
+        }
+        getClues()
     }
 }
 
