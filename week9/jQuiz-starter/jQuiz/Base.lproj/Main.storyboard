@@ -22,6 +22,34 @@
                                     <constraint firstAttribute="height" constant="400" id="VWg-EZ-6se"/>
                                 </constraints>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ClueCell" id="rTN-3f-7ww" customClass="ClueCell" customModule="jQuiz" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="354" height="43"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rTN-3f-7ww" id="Jhl-4y-3wz">
+                                            <rect key="frame" x="0.0" y="0.0" width="354" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hvk-QT-1Ep">
+                                                    <rect key="frame" x="20" y="11" width="314" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="hvk-QT-1Ep" firstAttribute="leading" secondItem="Jhl-4y-3wz" secondAttribute="leadingMargin" id="7iU-dk-exc"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="hvk-QT-1Ep" secondAttribute="trailing" id="8nv-Zx-w0j"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="hvk-QT-1Ep" secondAttribute="bottom" id="LRv-cz-tag"/>
+                                                <constraint firstItem="hvk-QT-1Ep" firstAttribute="top" secondItem="Jhl-4y-3wz" secondAttribute="topMargin" id="eGN-Br-miS"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outlet property="clueLabel" destination="hvk-QT-1Ep" id="8z4-h3-4mp"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HVo-4j-EUU">
                                 <rect key="frame" x="25" y="815" width="19" height="22"/>

@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var scoreLabel: UILabel!
 
     var clues: [Clue] = []
+    let game = GameModel()
     var correctAnswerClue: Clue?
     var points: Int = 0
 
@@ -36,7 +37,34 @@ class ViewController: UIViewController {
         }
 
         SoundManager.shared.playSound()
+        getClues()
         
+    }
+    
+    func getClues() {
+        Networking.sharedInstance.getRandomCategory(completion: { (categoryId) in
+            
+            guard let id = categoryId else {
+                print("oops")
+                return
+            }
+            
+            Networking.sharedInstance.getAllCluesInCategory(categoryId: id) { (clues) in
+                self.clues = clues
+                self.correctAnswerClue = clues.randomElement()
+                self.setUpView()
+            }
+        })
+        
+    }
+    
+    func setUpView(){
+        DispatchQueue.main.async {
+            self.categoryLabel.text = self.correctAnswerClue?.category.title
+            self.clueLabel.text = self.correctAnswerClue?.question
+            self.scoreLabel.text = "\(self.points)"
+            self.tableView.reloadData()
+        }
     }
 
     @IBAction func didPressVolumeButton(_ sender: Any) {
@@ -60,7 +88,13 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ClueCell", for: indexPath) as? ClueCell else {
+            return UITableViewCell()
+        }
+        //TODO
+        let clue = clues[indexPath.row]
+        cell.clueLabel.text = clue.answer
+        
         return cell
     }
 
