@@ -55,9 +55,12 @@ class Networking {
                 if let data = data {
                     do{
                         let decoder = JSONDecoder()
-                        let clues = try decoder.decode([Clue].self, from: data)
+                        var clues = try decoder.decode([Clue].self, from: data)
                         var limitedClues : [Clue] = []
                         for i in 0...3 {
+                            if clues[i].answer == nil {
+                                clues[i].answer = "Goerge Washington"
+                            }
                             limitedClues.append(clues[i])
                         }
                         limitedClues.shuffle()

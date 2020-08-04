@@ -84,6 +84,56 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		85B708CD24D34325008DE55C /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				C3DF5B7C24C2549400F6D3EC /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		85B708CE24D38706008DE55C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C3DF5BAF24C260A600F6D3EC /* Clue.swift */,
+				85B708CB24D2C38D008DE55C /* GameModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		85B708CF24D38731008DE55C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C3FBE53724C4DEA300D11A30 /* ImageCache.swift */,
+				85B708C924D2B1C2008DE55C /* ClueCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		85B708D024D3874B008DE55C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C3DF5B7A24C2549400F6D3EC /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		85B708D124D38764008DE55C /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				C3DF5BAD24C25E1A00F6D3EC /* NetworkingHandler.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		85B708D224D38AB8008DE55C /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				C3FBE53524C2877C00D11A30 /* SoundManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		C3DF5B6A24C2549400F6D3EC = {
 			isa = PBXGroup;
 			children = (
@@ -106,14 +156,12 @@
 			isa = PBXGroup;
 			children = (
 				C3DF5BA924C254A800F6D3EC /* AppDelegate */,
-				C3DF5B7A24C2549400F6D3EC /* ViewController.swift */,
-				85B708C924D2B1C2008DE55C /* ClueCell.swift */,
-				C3DF5BAD24C25E1A00F6D3EC /* NetworkingHandler.swift */,
-				85B708CB24D2C38D008DE55C /* GameModel.swift */,
-				C3FBE53524C2877C00D11A30 /* SoundManager.swift */,
-				C3DF5BAF24C260A600F6D3EC /* Clue.swift */,
-				C3FBE53724C4DEA300D11A30 /* ImageCache.swift */,
-				C3DF5B7C24C2549400F6D3EC /* Main.storyboard */,
+				85B708CE24D38706008DE55C /* Model */,
+				85B708CF24D38731008DE55C /* View */,
+				85B708D124D38764008DE55C /* Networking */,
+				85B708D024D3874B008DE55C /* Controller */,
+				85B708D224D38AB8008DE55C /* Managers */,
+				85B708CD24D34325008DE55C /* Storyboards */,
 				C3DF5B8424C2549A00F6D3EC /* LaunchScreen.storyboard */,
 				C3DF5BAC24C256D600F6D3EC /* Assets */,
 				C3DF5B8724C2549A00F6D3EC /* Info.plist */,
