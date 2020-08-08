@@ -30,6 +30,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        
+        
         setButtonConstraints()
     }
     
@@ -37,6 +39,7 @@ class ViewController: UIViewController {
     
     @IBAction func toggleMenu(_ sender: UIButton) {
         menuIsOpen.toggle()
+
         //set button constraints
         setButtonConstraints()
         
@@ -50,22 +53,32 @@ class ViewController: UIViewController {
                         self.view.layoutIfNeeded()
                         }
         )
+        
         if menuIsOpen == false {
             animator.startAnimation()
         }
     }
     
     @IBAction func mushroomPressed(_ sender: UIButton) {
+        animator.addAnimations {
+            UIView.animate(withDuration: 2, animations: {
+                self.marioImage.transform = CGAffineTransform(scaleX: 2, y: 2)
+            }) { _ in
+                UIView.animate(withDuration: 2, animations: {
+                    self.marioImage.transform = CGAffineTransform.identity
+                })
+            }
+        }
         
     }
     
     
-    @IBAction func featherPressed(_ sender: Any) {
+    @IBAction func featherPressed(_ sender: UIButton) {
         animator.addAnimations {
-            UIView.animate(withDuration: 2, delay: 0, animations: {
+            UIView.animate(withDuration: 2, animations: {
                 self.marioImage.frame.origin.y -= 300
             }){ _ in
-                UIView.animate(withDuration: 2, delay: 0, animations: {
+                UIView.animate(withDuration: 2, animations: {
                     self.marioImage.frame.origin.y += 300
                 })
             }
@@ -75,7 +88,17 @@ class ViewController: UIViewController {
     
     
     
-    @IBAction func starPressed(_ sender: Any) {
+    @IBAction func starPressed(_ sender: UIButton) {
+        animator.addAnimations {
+            UIView.animate(withDuration: 2,
+                  animations: {
+                    self.marioImage.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 0.01126391267, alpha: 1)
+            }) { _ in
+                UIView.animateKeyframes(withDuration: 0.2, delay: 0, options: [.autoreverse,.repeat], animations: {
+                    self.marioImage.backgroundColor = .clear
+                })
+            }
+        }
     }
     
     
