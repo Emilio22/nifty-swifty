@@ -13,16 +13,18 @@ class ViewController: UIViewController {
     //MARK:- IB Outlets
     @IBOutlet weak var menuButton: RoundButton!
     @IBOutlet weak var mushroomButton: RoundButton!
-    @IBOutlet weak var topButton: RoundButton!
-    @IBOutlet weak var rightButton: RoundButton!
+    @IBOutlet weak var featherButton: RoundButton!
+    @IBOutlet weak var starButton: RoundButton!
+    @IBOutlet weak var marioImage: UIImageView!
     
     //MARK:- Constraints
-    @IBOutlet weak var leftButtonToCenterConstraint: NSLayoutConstraint!
-    @IBOutlet weak var topButtonToCenterConstraint: NSLayoutConstraint!
-    @IBOutlet weak var rightButtonToCenterConstraint: NSLayoutConstraint!
+    @IBOutlet weak var mushroomButtonToMenuConstraint: NSLayoutConstraint!
+    @IBOutlet weak var featherButtonToMenuConstraint: NSLayoutConstraint!
+    @IBOutlet weak var starButtonToMenuConstraint: NSLayoutConstraint!
     
     //MARK:- Variables
     private var menuIsOpen = false
+    var animator = UIViewPropertyAnimator()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,9 +34,9 @@ class ViewController: UIViewController {
     }
     
     
+    
     @IBAction func toggleMenu(_ sender: UIButton) {
         menuIsOpen.toggle()
-        
         //set button constraints
         setButtonConstraints()
         
@@ -48,14 +50,27 @@ class ViewController: UIViewController {
                         self.view.layoutIfNeeded()
                         }
         )
-        
+        if menuIsOpen == false {
+            animator.startAnimation()
+        }
     }
     
     @IBAction func mushroomPressed(_ sender: UIButton) {
+        
     }
     
     
     @IBAction func featherPressed(_ sender: Any) {
+        animator.addAnimations {
+            UIView.animate(withDuration: 2, delay: 0, animations: {
+                self.marioImage.frame.origin.y -= 300
+            }){ _ in
+                UIView.animate(withDuration: 2, delay: 0, animations: {
+                    self.marioImage.frame.origin.y += 300
+                })
+            }
+        }
+        
     }
     
     
@@ -67,9 +82,9 @@ class ViewController: UIViewController {
     
     //if toggleMenu is false, hide buttons under center button
     func setButtonConstraints() {
-        leftButtonToCenterConstraint.constant = menuIsOpen ? 30 : -70
-        topButtonToCenterConstraint.constant = menuIsOpen ? 30 : -70
-        rightButtonToCenterConstraint.constant = menuIsOpen ? 30 : -70
+        mushroomButtonToMenuConstraint.constant = menuIsOpen ? 30 : -70
+        featherButtonToMenuConstraint.constant = menuIsOpen ? 30 : -70
+        starButtonToMenuConstraint.constant = menuIsOpen ? 30 : -70
     }
     
 

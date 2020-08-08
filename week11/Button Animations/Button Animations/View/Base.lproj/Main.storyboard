@@ -148,13 +148,14 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="leftButtonToCenterConstraint" destination="vMD-Wc-k6e" id="clg-CE-tF0"/>
+                        <outlet property="featherButton" destination="ekd-T6-6mF" id="3Dw-3D-OhI"/>
+                        <outlet property="featherButtonToMenuConstraint" destination="68j-up-tgv" id="Qe2-2x-oHL"/>
+                        <outlet property="marioImage" destination="bD1-wg-K4Q" id="Mv2-fw-yod"/>
                         <outlet property="menuButton" destination="XXU-tr-YK3" id="qHh-LW-VvX"/>
                         <outlet property="mushroomButton" destination="poX-Wb-nXA" id="lFt-fo-XeP"/>
-                        <outlet property="rightButton" destination="wbl-UN-0mo" id="FKX-YF-gn3"/>
-                        <outlet property="rightButtonToCenterConstraint" destination="XVN-dQ-g2f" id="jGA-Ug-jh2"/>
-                        <outlet property="topButton" destination="ekd-T6-6mF" id="3Dw-3D-OhI"/>
-                        <outlet property="topButtonToCenterConstraint" destination="68j-up-tgv" id="Qe2-2x-oHL"/>
+                        <outlet property="mushroomButtonToMenuConstraint" destination="vMD-Wc-k6e" id="clg-CE-tF0"/>
+                        <outlet property="starButton" destination="wbl-UN-0mo" id="FKX-YF-gn3"/>
+                        <outlet property="starButtonToMenuConstraint" destination="XVN-dQ-g2f" id="jGA-Ug-jh2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
