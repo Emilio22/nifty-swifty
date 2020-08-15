@@ -164,6 +164,8 @@
 		C3C9D398249B3479001F55A6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				854722CE24AA8FEB0059D202 /* TextPostCell.swift */,
+				854722D024AA92950059D202 /* ImagePostCell.swift */,
 				C3C9D39A249B3711001F55A6 /* MediaPostsHandler.swift */,
 				C3C9D396249B346E001F55A6 /* MediaPostProtocol.swift */,
 				C3C9D392249B3448001F55A6 /* TextPostModel.swift */,
@@ -176,8 +178,6 @@
 			isa = PBXGroup;
 			children = (
 				C3C9D361249B324B001F55A6 /* ViewController.swift */,
-				854722CE24AA8FEB0059D202 /* TextPostCell.swift */,
-				854722D024AA92950059D202 /* ImagePostCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

@@ -15,6 +15,8 @@ class Networking {
     
     //get a random category
     func getRandomCategory(completion: @escaping(_ categoryId: Int?) -> ()){
+        print("getRandomCategory is called")
+        
         let urlString = "http://www.jservice.io/api/random"
         if let url = URL(string: urlString){
             //create a session
@@ -31,7 +33,9 @@ class Networking {
                         let decoder = JSONDecoder()
                         let clue = try decoder.decode([Clue].self, from: data)
                         let categoryId = clue.first?.category_id
+                        print("before calling categoryID in completion handler")
                         completion(categoryId)
+                        print("after calling completion handler in getRandomCategory")
                     } catch let error {
                         print(error.localizedDescription)
                     }
@@ -40,10 +44,11 @@ class Networking {
             }
             task.resume()
         }
-        
+        print("the end of get RandomCategory")
     }
     
     func getAllCluesInCategory(categoryId: Int, completion: @escaping([Clue]) -> ()){
+        print("getAllCluesInCategy is called")
         let urlString = "http://www.jservice.io/api/clues/?category=\(categoryId)"
         if let url = URL(string: urlString) {
             let session = URLSession(configuration: .default)
@@ -65,6 +70,7 @@ class Networking {
                         }
                         limitedClues.shuffle()
                         completion(limitedClues)
+                        print("after calling completion handler in getAllCluesInCategory")
                     } catch let error {
                         print(error.localizedDescription)
                     }

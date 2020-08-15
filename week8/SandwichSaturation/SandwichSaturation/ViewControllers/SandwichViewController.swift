@@ -21,6 +21,7 @@ class SandwichViewController: UITableViewController, SandwichDataSource {
   
   let searchController = UISearchController(searchResultsController: nil)
   
+
   private var fetchedSandwichesController: NSFetchedResultsController<Sandwich>!
   
   var sandwiches = [Sandwich]()
@@ -61,7 +62,7 @@ class SandwichViewController: UITableViewController, SandwichDataSource {
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    refresh()
+    fetchSandwiches()
   }
   
   
@@ -104,17 +105,19 @@ class SandwichViewController: UITableViewController, SandwichDataSource {
     sandwich.sauceAmount = sauceAmount
 
     appDelegate.saveContext()
-    refresh()
+    fetchSandwiches()
     tableView.reloadData()
   }
   
-  private func refresh() {
+  private func fetchSandwiches() {
     let request = Sandwich.fetchRequest() as NSFetchRequest<Sandwich>
     let sauceString = selectedSauce?.rawValue
     
     
     
     if isFiltering {
+      
+      
       if selectedSauce == SauceAmount.any {
         request.predicate = NSPredicate(format: "name CONTAINS[cd] %@", query)
       } else if !(query.isEmpty){
@@ -154,7 +157,7 @@ class SandwichViewController: UITableViewController, SandwichDataSource {
       query = searchText
     }
     selectedSauce = sauceAmount
-    refresh()
+    fetchSandwiches()
     tableView.reloadData()
   }
   

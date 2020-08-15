@@ -18,7 +18,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var scoreLabel: UILabel!
 
     var clues: [Clue] = []
-    let game = GameModel()
     var correctAnswerClue: Clue?
     var points: Int = 0
     let imageURL = "https://cdn1.edgedatg.com/aws/v2/abc/ABCUpdates/blog/2900129/8484c3386d4378d7c826e3f3690b481b/1600x900-Q90_8484c3386d4378d7c826e3f3690b481b.jpg"
@@ -44,16 +43,16 @@ class ViewController: UIViewController {
     
     func getClues() {
         Networking.sharedInstance.getRandomCategory(completion: { (categoryId) in
-            
+            print("Closure inside .getRandomCategory")
             guard let id = categoryId else {
                 return
             }
-            print("Category ID: \(id)")
+
             
             Networking.sharedInstance.getAllCluesInCategory(categoryId: id) { (clues) in
+                print("Closure inside .getAllCluesInCategory")
                 self.clues = clues
                 self.correctAnswerClue = clues.randomElement()
-                print(self.correctAnswerClue?.answer ?? "oops")
                 self.setUpView()
             }
         })

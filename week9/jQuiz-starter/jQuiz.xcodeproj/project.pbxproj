@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		85B708CA24D2B1C2008DE55C /* ClueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B708C924D2B1C2008DE55C /* ClueCell.swift */; };
-		85B708CC24D2C38D008DE55C /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B708CB24D2C38D008DE55C /* GameModel.swift */; };
 		C3DF5B7724C2549400F6D3EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DF5B7624C2549400F6D3EC /* AppDelegate.swift */; };
 		C3DF5B7924C2549400F6D3EC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DF5B7824C2549400F6D3EC /* SceneDelegate.swift */; };
 		C3DF5B7B24C2549400F6D3EC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DF5B7A24C2549400F6D3EC /* ViewController.swift */; };
@@ -41,7 +40,6 @@
 
 /* Begin PBXFileReference section */
 		85B708C924D2B1C2008DE55C /* ClueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClueCell.swift; sourceTree = "<group>"; };
-		85B708CB24D2C38D008DE55C /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		C3DF5B7324C2549400F6D3EC /* jQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3DF5B7624C2549400F6D3EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C3DF5B7824C2549400F6D3EC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +85,7 @@
 		85B708CD24D34325008DE55C /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				C3DF5B8424C2549A00F6D3EC /* LaunchScreen.storyboard */,
 				C3DF5B7C24C2549400F6D3EC /* Main.storyboard */,
 			);
 			path = Storyboards;
@@ -96,7 +95,6 @@
 			isa = PBXGroup;
 			children = (
 				C3DF5BAF24C260A600F6D3EC /* Clue.swift */,
-				85B708CB24D2C38D008DE55C /* GameModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -162,7 +160,6 @@
 				85B708D024D3874B008DE55C /* Controller */,
 				85B708D224D38AB8008DE55C /* Managers */,
 				85B708CD24D34325008DE55C /* Storyboards */,
-				C3DF5B8424C2549A00F6D3EC /* LaunchScreen.storyboard */,
 				C3DF5BAC24C256D600F6D3EC /* Assets */,
 				C3DF5B8724C2549A00F6D3EC /* Info.plist */,
 			);
@@ -321,7 +318,6 @@
 			files = (
 				C3DF5BAE24C25E1A00F6D3EC /* NetworkingHandler.swift in Sources */,
 				C3DF5B7B24C2549400F6D3EC /* ViewController.swift in Sources */,
-				85B708CC24D2C38D008DE55C /* GameModel.swift in Sources */,
 				85B708CA24D2B1C2008DE55C /* ClueCell.swift in Sources */,
 				C3DF5B7724C2549400F6D3EC /* AppDelegate.swift in Sources */,
 				C3DF5B7924C2549400F6D3EC /* SceneDelegate.swift in Sources */,

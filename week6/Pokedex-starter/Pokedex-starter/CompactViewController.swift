@@ -53,7 +53,8 @@ class CompactViewController: UIViewController {
       
       let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.2))
       let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-
+      group.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
+    
       let section = NSCollectionLayoutSection(group: group)
       return UICollectionViewCompositionalLayout(section: section)
       
