@@ -22,6 +22,10 @@ class DetailViewController: UIViewController {
         nameLabel.text = cocktail.drinkName
         let url = URL(string: cocktail.imageString)
         imageView.kf.setImage(with: url)
+        
+        print(cocktail.getIngredients())
+        print(cocktail.getMeasurements())
+        
     }
     
     init?(coder: NSCoder, cocktail: Cocktail) {
