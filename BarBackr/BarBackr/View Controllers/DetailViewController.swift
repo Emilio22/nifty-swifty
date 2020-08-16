@@ -15,8 +15,9 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var tableView: IngredientsTableView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var instructionsLabel: UILabel!
     
-    @IBOutlet weak var instructionsTextView: UITextView!
+    
     let cocktail: Cocktail
     var ingredients : [String] = []
     var measurements : [String] = []
@@ -30,10 +31,16 @@ class DetailViewController: UIViewController {
         
         ingredients = cocktail.getIngredients()
         measurements = cocktail.getMeasurements()
+        
+        //when API uses club soda at the end, it does not include a measurent.  This adds splash and prevents potential crash
+        if (measurements.count < ingredients.count) {
+            measurements.append("Splash")
+        }
         updateView()
         
         print(cocktail.getIngredients())
         print(cocktail.getMeasurements())
+        print(cocktail.instructions)
         
     }
     
@@ -48,14 +55,13 @@ class DetailViewController: UIViewController {
         nameLabel.text = cocktail.drinkName
         let url = URL(string: cocktail.imageString)
         imageView.kf.setImage(with: url)
-        instructionsTextView.text = cocktail.instructions
+        instructionsLabel.text = cocktail.instructions
     }
     
 }
 
 extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(cocktail.getIngredients().count)
         return cocktail.getIngredients().count
     }
     

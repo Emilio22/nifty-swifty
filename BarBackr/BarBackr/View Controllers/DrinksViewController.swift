@@ -33,9 +33,9 @@ class DrinksViewController: UIViewController {
     @IBAction func getRandomCocktail(_ sender: UIButton) {
         Networking.sharedInstance.getRandomCocktail { (result) in
             do {
-                let cocktail = try result.get()
+                let results = try result.get()
                 DispatchQueue.main.async {
-                    let cocktail = cocktail.drinks[0]
+                    let cocktail = results.drinks[0]
                     self.drinks.append(cocktail)
                     self.tableView.reloadData()
                 }
@@ -50,9 +50,9 @@ class DrinksViewController: UIViewController {
         if motion == .motionShake {
             Networking.sharedInstance.getRandomCocktail { (result) in
                 do {
-                    let cocktail = try result.get()
+                    let results = try result.get()
                     DispatchQueue.main.async {
-                        let cocktail = cocktail.drinks[0]
+                        let cocktail = results.drinks[0]
                         self.drinks.append(cocktail)
                         self.tableView.reloadData()
                     }
@@ -64,10 +64,14 @@ class DrinksViewController: UIViewController {
         }
     }
     
+    // MARK:- Segues
     @IBSegueAction func showDetailView(_ coder: NSCoder) -> DetailViewController? {
         guard let indexPath = tableView.indexPathForSelectedRow else { fatalError() }
         let cocktail = drinks[indexPath.row]
         return DetailViewController(coder: coder, cocktail: cocktail)
+    }
+    @IBSegueAction func showSearchView(_ coder: NSCoder) -> SearchViewController? {
+        return SearchViewController(coder: coder, drinks: drinks)
     }
 }
 
