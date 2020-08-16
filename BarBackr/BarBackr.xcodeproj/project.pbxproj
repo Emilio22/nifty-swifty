@@ -19,6 +19,7 @@
 		85D7F8E624E7687600F801CD /* Cocktail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D7F8E524E7687600F801CD /* Cocktail.swift */; };
 		85D7F8EB24E770D000F801CD /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D7F8EA24E770D000F801CD /* Networking.swift */; };
 		85D7F8EF24E84EDA00F801CD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D7F8EE24E84EDA00F801CD /* Extensions.swift */; };
+		85E5CCB624E8C028005AC228 /* IngredientsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E5CCB524E8C028005AC228 /* IngredientsTableView.swift */; };
 		8D2ABA7559FB3B0838DC594F /* Pods_BarBackr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 557AB8CD77CDC8BF38C8E5DF /* Pods_BarBackr.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		85D7F8E524E7687600F801CD /* Cocktail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cocktail.swift; sourceTree = "<group>"; };
 		85D7F8EA24E770D000F801CD /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		85D7F8EE24E84EDA00F801CD /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		85E5CCB524E8C028005AC228 /* IngredientsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsTableView.swift; sourceTree = "<group>"; };
 		B0DACEB4A6942A436DC5ABF4 /* Pods-BarBackr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BarBackr.release.xcconfig"; path = "Target Support Files/Pods-BarBackr/Pods-BarBackr.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -120,6 +122,7 @@
 				857010B624E4DC2100EBD073 /* Main.storyboard */,
 				857010BE24E4DC2500EBD073 /* LaunchScreen.storyboard */,
 				85CECAEB24E889400076B440 /* CocktailCell.swift */,
+				85E5CCB524E8C028005AC228 /* IngredientsTableView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 			files = (
 				857010B524E4DC2100EBD073 /* DrinksViewController.swift in Sources */,
 				85D7F8E624E7687600F801CD /* Cocktail.swift in Sources */,
+				85E5CCB624E8C028005AC228 /* IngredientsTableView.swift in Sources */,
 				857010BB24E4DC2100EBD073 /* BarBackr.xcdatamodeld in Sources */,
 				85D7F8EB24E770D000F801CD /* Networking.swift in Sources */,
 				857010B124E4DC2100EBD073 /* AppDelegate.swift in Sources */,

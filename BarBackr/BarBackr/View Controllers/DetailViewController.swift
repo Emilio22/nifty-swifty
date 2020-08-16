@@ -11,17 +11,26 @@ import Kingfisher
 
 class DetailViewController: UIViewController {
 
+
+    @IBOutlet weak var tableView: IngredientsTableView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     
-        let cocktail: Cocktail
+    @IBOutlet weak var instructionsTextView: UITextView!
+    let cocktail: Cocktail
+    var ingredients : [String] = []
+    var measurements : [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        nameLabel.text = cocktail.drinkName
-        let url = URL(string: cocktail.imageString)
-        imageView.kf.setImage(with: url)
+        
+        
+        tableView.estimatedRowHeight = 60.0
+        tableView.rowHeight = UITableView.automaticDimension;
+        
+        ingredients = cocktail.getIngredients()
+        measurements = cocktail.getMeasurements()
+        updateView()
         
         print(cocktail.getIngredients())
         print(cocktail.getMeasurements())
@@ -34,6 +43,28 @@ class DetailViewController: UIViewController {
     }
     
     required init?(coder: NSCoder) { fatalError() }
+    
+    func updateView() {
+        nameLabel.text = cocktail.drinkName
+        let url = URL(string: cocktail.imageString)
+        imageView.kf.setImage(with: url)
+        instructionsTextView.text = cocktail.instructions
+    }
+    
+}
+
+extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(cocktail.getIngredients().count)
+        return cocktail.getIngredients().count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "IngredientMeasurementCell", for: indexPath)
+        cell.textLabel?.text = "\(measurements[indexPath.row]) \(ingredients[indexPath.row])"
+        
+        return cell
+    }
     
     
 }
