@@ -129,7 +129,20 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8G0-0n-6mb" id="to2-dY-T8M">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="83L-w5-zSb">
+                                            <rect key="frame" x="369.66666666666669" y="10.000000000000002" width="24.333333333333314" height="23.666666666666671"/>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="83L-w5-zSb" firstAttribute="centerY" secondItem="to2-dY-T8M" secondAttribute="centerY" id="9v4-0Y-byF"/>
+                                        <constraint firstItem="83L-w5-zSb" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="to2-dY-T8M" secondAttribute="leading" constant="358" id="Ytq-hq-8uN"/>
+                                        <constraint firstAttribute="trailing" secondItem="83L-w5-zSb" secondAttribute="trailing" constant="20" symbolic="YES" id="rJj-bz-9bc"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="9t3-Nr-xTl" kind="show" destinationCreationSelector="showDetails:" id="zRi-s9-ots"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -144,7 +157,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gtC-3n-IPA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1847" y="471"/>
+            <point key="canvasLocation" x="1854" y="504"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="LX7-bW-B2L">
@@ -242,7 +255,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h1I-3t-zzB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2683" y="121"/>
+            <point key="canvasLocation" x="2694" y="139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cZj-Sy-6oR">
@@ -263,4 +276,7 @@
             <point key="canvasLocation" x="131.8840579710145" y="138.61607142857142"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="zRi-s9-ots"/>
+    </inferredMetricsTieBreakers>
 </document>

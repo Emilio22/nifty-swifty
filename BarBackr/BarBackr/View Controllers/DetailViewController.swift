@@ -32,9 +32,9 @@ class DetailViewController: UIViewController {
         ingredients = cocktail.getIngredients()
         measurements = cocktail.getMeasurements()
         
-        //when API uses club soda at the end, it does not include a measurent.  This adds splash and prevents potential crash
+        //Some items will have no measurement, adding space prevents crash
         if (measurements.count < ingredients.count) {
-            measurements.append("Splash")
+            measurements.append(" ")
         }
         updateView()
         

@@ -39,6 +39,7 @@ class SearchViewController: UITableViewController {
                 }
             } catch {
                 print(result)
+                self.clearResults()
             }
         }
     }
@@ -50,6 +51,11 @@ class SearchViewController: UITableViewController {
         }
     }
     
+    @IBSegueAction func showDetails(_ coder: NSCoder) -> DetailViewController? {
+        guard let indexPath = tableView.indexPathForSelectedRow else { fatalError() }
+        let cocktail = searchResults[indexPath.row]
+        return DetailViewController(coder: coder, cocktail: cocktail)
+    }
     
     
     // MARK: - Table view data source
@@ -78,6 +84,7 @@ extension SearchViewController: UISearchBarDelegate {
         if searchText == "" {
             clearResults()
         } else {
+            //replace spaces with underscore so the string can make a proper path
             let formatedSearchText = searchText.replacingOccurrences(of: " ", with: "_")
             searchCocktail(searchText: formatedSearchText)
         }
