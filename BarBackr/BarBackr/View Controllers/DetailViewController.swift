@@ -68,7 +68,6 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "IngredientMeasurementCell", for: indexPath)
         cell.textLabel?.text = "\(measurements[indexPath.row]) \(ingredients[indexPath.row])"
-        
         return cell
     }
     

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		851FB45024E8DD0700BF3B10 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851FB44F24E8DD0700BF3B10 /* SearchViewController.swift */; };
+		851FB45224E9F9AE00BF3B10 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851FB45124E9F9AE00BF3B10 /* SearchResultCell.swift */; };
+		851FB45424EA15FC00BF3B10 /* DrinksMananger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851FB45324EA15FC00BF3B10 /* DrinksMananger.swift */; };
 		8525801924E8832E005EAA04 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8525801824E8832E005EAA04 /* DetailViewController.swift */; };
 		857010B124E4DC2100EBD073 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857010B024E4DC2100EBD073 /* AppDelegate.swift */; };
 		857010B324E4DC2100EBD073 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857010B224E4DC2100EBD073 /* SceneDelegate.swift */; };
@@ -28,6 +30,8 @@
 		557AB8CD77CDC8BF38C8E5DF /* Pods_BarBackr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BarBackr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D09399D5CCBB7BD9D429656 /* Pods-BarBackr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BarBackr.debug.xcconfig"; path = "Target Support Files/Pods-BarBackr/Pods-BarBackr.debug.xcconfig"; sourceTree = "<group>"; };
 		851FB44F24E8DD0700BF3B10 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		851FB45124E9F9AE00BF3B10 /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
+		851FB45324EA15FC00BF3B10 /* DrinksMananger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinksMananger.swift; sourceTree = "<group>"; };
 		8525801824E8832E005EAA04 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		857010AD24E4DC2100EBD073 /* BarBackr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BarBackr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		857010B024E4DC2100EBD073 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				85D7F8E524E7687600F801CD /* Cocktail.swift */,
+				851FB45324EA15FC00BF3B10 /* DrinksMananger.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -126,6 +131,7 @@
 				857010BE24E4DC2500EBD073 /* LaunchScreen.storyboard */,
 				85CECAEB24E889400076B440 /* CocktailCell.swift */,
 				85E5CCB524E8C028005AC228 /* IngredientsTableView.swift */,
+				851FB45124E9F9AE00BF3B10 /* SearchResultCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -271,6 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				857010B524E4DC2100EBD073 /* DrinksViewController.swift in Sources */,
+				851FB45224E9F9AE00BF3B10 /* SearchResultCell.swift in Sources */,
 				851FB45024E8DD0700BF3B10 /* SearchViewController.swift in Sources */,
 				85D7F8E624E7687600F801CD /* Cocktail.swift in Sources */,
 				85E5CCB624E8C028005AC228 /* IngredientsTableView.swift in Sources */,
@@ -279,6 +286,7 @@
 				857010B124E4DC2100EBD073 /* AppDelegate.swift in Sources */,
 				857010B324E4DC2100EBD073 /* SceneDelegate.swift in Sources */,
 				85CECAEC24E889400076B440 /* CocktailCell.swift in Sources */,
+				851FB45424EA15FC00BF3B10 /* DrinksMananger.swift in Sources */,
 				85D7F8EF24E84EDA00F801CD /* Extensions.swift in Sources */,
 				8525801924E8832E005EAA04 /* DetailViewController.swift in Sources */,
 			);

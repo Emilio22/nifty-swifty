@@ -13,13 +13,14 @@ class DrinksViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var drinks: [Cocktail] = []
-
+    var drinksManager = DrinksMananger()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         tableView.rowHeight = 100
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,7 +37,7 @@ class DrinksViewController: UIViewController {
                 let results = try result.get()
                 DispatchQueue.main.async {
                     let cocktail = results.drinks[0]
-                    self.drinks.append(cocktail)
+                    self.drinksManager.drinks.append(cocktail)
                     self.tableView.reloadData()
                 }
             } catch {
@@ -53,7 +54,7 @@ class DrinksViewController: UIViewController {
                     let results = try result.get()
                     DispatchQueue.main.async {
                         let cocktail = results.drinks[0]
-                        self.drinks.append(cocktail)
+                        self.drinksManager.drinks.append(cocktail)
                         self.tableView.reloadData()
                     }
                     self.tableView.reloadData()
@@ -67,11 +68,12 @@ class DrinksViewController: UIViewController {
     // MARK:- Segues
     @IBSegueAction func showDetailView(_ coder: NSCoder) -> DetailViewController? {
         guard let indexPath = tableView.indexPathForSelectedRow else { fatalError() }
-        let cocktail = drinks[indexPath.row]
+        let cocktail = drinksManager.drinks[indexPath.row]
         return DetailViewController(coder: coder, cocktail: cocktail)
     }
+    
     @IBSegueAction func showSearchView(_ coder: NSCoder) -> SearchViewController? {
-        return SearchViewController(coder: coder, drinks: drinks)
+        return SearchViewController(coder: coder, drinks: self.drinksManager)
     }
 }
 
@@ -83,12 +85,12 @@ extension DrinksViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return drinks.count
+        return drinksManager.drinks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(CocktailCell.self)", for: indexPath) as? CocktailCell else { fatalError() }
-        let cocktail = drinks[indexPath.row]
+        let cocktail = drinksManager.drinks[indexPath.row]
         let url = URL(string: cocktail.imageString)
         
         cell.nameLabel.text = cocktail.drinkName
@@ -97,6 +99,5 @@ extension DrinksViewController: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
-    
-
 }
+

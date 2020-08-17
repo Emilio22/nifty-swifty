@@ -8,27 +8,32 @@
 
 import UIKit
 
-class SearchViewController: UITableViewController {
+
+
+class SearchViewController: UITableViewController, UINavigationControllerDelegate {
 
     @IBOutlet weak var searchBar: UISearchBar!
     
-    let drinks : [Cocktail]
+    var drinksManager : DrinksMananger
     var searchResults : [Cocktail] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
         searchBar.placeholder = "Search Cocktail"
+        tableView.rowHeight = 55
     }
     
-    init?(coder: NSCoder, drinks: [Cocktail]) {
-        self.drinks = drinks
+    init?(coder: NSCoder, drinks: DrinksMananger) {
+        self.drinksManager = drinks
         super.init(coder: coder)
     }
     
     required init?(coder: NSCoder) { fatalError() }
 
     
+    //MARK:- Functions
+    //search cocktail
     func searchCocktail(searchText: String){
         Networking.sharedInstance.searchCocktail(searchPath: searchText) { (result) in
             do {
@@ -44,6 +49,7 @@ class SearchViewController: UITableViewController {
         }
     }
     
+    //clear results
     func clearResults() {
         DispatchQueue.main.async {
             self.searchResults = []
@@ -51,6 +57,9 @@ class SearchViewController: UITableViewController {
         }
     }
     
+
+    
+    // MARK:- Segues
     @IBSegueAction func showDetails(_ coder: NSCoder) -> DetailViewController? {
         guard let indexPath = tableView.indexPathForSelectedRow else { fatalError() }
         let cocktail = searchResults[indexPath.row]
@@ -59,6 +68,10 @@ class SearchViewController: UITableViewController {
     
     
     // MARK: - Table view data source
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 55
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -68,14 +81,23 @@ class SearchViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Result Cell", for: indexPath) as UITableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResultCell", for: indexPath) as? SearchResultCell else { fatalError() }
         
         let cocktail = searchResults[indexPath.row]
-        cell.textLabel?.text = cocktail.drinkName
+        cell.cocktailNameLabel.text = cocktail.drinkName
+        cell.cocktail = cocktail
+        cell.delegate = self
         
         return cell
     }
+}
 
+// MARK:- SearchResultCell Delegate
+extension SearchViewController: SearchResultCellDelegate {
+    func searchResultTableCell(_ searchResultTableCell: SearchResultCell, addButtonTappedFor cocktail: Cocktail) {
+        drinksManager.drinks.append(cocktail)
+        print("drink added")
+    }
 }
 
 // MARK:- Searchbar Delegate

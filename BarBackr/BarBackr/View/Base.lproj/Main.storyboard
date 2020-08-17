@@ -109,7 +109,7 @@
             </objects>
             <point key="canvasLocation" x="1042.0289855072465" y="138.61607142857142"/>
         </scene>
-        <!--Search View Controller-->
+        <!--Search-->
         <scene sceneID="IoS-nv-hMK">
             <objects>
                 <tableViewController id="NoO-rS-FrJ" customClass="SearchViewController" customModule="BarBackr" customModuleProvider="target" sceneMemberID="viewController">
@@ -123,24 +123,38 @@
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Result Cell" id="8G0-0n-6mb">
-                                <rect key="frame" x="0.0" y="72" width="414" height="43.666667938232422"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchResultCell" rowHeight="50" id="8G0-0n-6mb" customClass="SearchResultCell" customModule="BarBackr" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="72" width="414" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8G0-0n-6mb" id="to2-dY-T8M">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="83L-w5-zSb">
-                                            <rect key="frame" x="369.66666666666669" y="10.000000000000002" width="24.333333333333314" height="23.666666666666671"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oAB-XR-0jB">
+                                            <rect key="frame" x="10" y="0.0" width="300.66666666666669" height="50"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dEO-rC-8il">
+                                            <rect key="frame" x="310.66666666666669" y="0.0" width="103.33333333333331" height="50"/>
+                                            <state key="normal" title="Add"/>
                                         </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="83L-w5-zSb" firstAttribute="centerY" secondItem="to2-dY-T8M" secondAttribute="centerY" id="9v4-0Y-byF"/>
-                                        <constraint firstItem="83L-w5-zSb" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="to2-dY-T8M" secondAttribute="leading" constant="358" id="Ytq-hq-8uN"/>
-                                        <constraint firstAttribute="trailing" secondItem="83L-w5-zSb" secondAttribute="trailing" constant="20" symbolic="YES" id="rJj-bz-9bc"/>
+                                        <constraint firstItem="dEO-rC-8il" firstAttribute="top" secondItem="to2-dY-T8M" secondAttribute="top" id="4qS-Uw-RzJ"/>
+                                        <constraint firstAttribute="bottom" secondItem="dEO-rC-8il" secondAttribute="bottom" id="CnX-Rd-Nvh"/>
+                                        <constraint firstItem="dEO-rC-8il" firstAttribute="width" secondItem="to2-dY-T8M" secondAttribute="width" multiplier="0.25" id="V1X-iK-0nF"/>
+                                        <constraint firstItem="oAB-XR-0jB" firstAttribute="leading" secondItem="to2-dY-T8M" secondAttribute="leading" constant="10" id="dmU-Eb-raY"/>
+                                        <constraint firstItem="oAB-XR-0jB" firstAttribute="top" secondItem="to2-dY-T8M" secondAttribute="top" id="jkh-ky-XHv"/>
+                                        <constraint firstItem="dEO-rC-8il" firstAttribute="leading" secondItem="oAB-XR-0jB" secondAttribute="trailing" id="mDb-Me-M9u"/>
+                                        <constraint firstAttribute="trailing" secondItem="dEO-rC-8il" secondAttribute="trailing" id="qbj-b2-tJl"/>
+                                        <constraint firstAttribute="bottom" secondItem="oAB-XR-0jB" secondAttribute="bottom" id="yEC-a6-a8u"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="addButton" destination="dEO-rC-8il" id="idy-uV-z6l"/>
+                                    <outlet property="cocktailNameLabel" destination="oAB-XR-0jB" id="izb-O0-hMW"/>
                                     <segue destination="9t3-Nr-xTl" kind="show" destinationCreationSelector="showDetails:" id="zRi-s9-ots"/>
                                 </connections>
                             </tableViewCell>
@@ -150,16 +164,16 @@
                             <outlet property="delegate" destination="NoO-rS-FrJ" id="rUt-rh-4hf"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Udp-Dm-921"/>
+                    <navigationItem key="navigationItem" title="Search" id="Udp-Dm-921"/>
                     <connections>
                         <outlet property="searchBar" destination="a5R-Ml-Tu8" id="nc7-Kp-4cC"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gtC-3n-IPA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1854" y="504"/>
+            <point key="canvasLocation" x="1853.6231884057972" y="503.57142857142856"/>
         </scene>
-        <!--Detail View Controller-->
+        <!--Details-->
         <scene sceneID="LX7-bW-B2L">
             <objects>
                 <viewController id="9t3-Nr-xTl" customClass="DetailViewController" customModule="BarBackr" customModuleProvider="target" sceneMemberID="viewController">
@@ -245,7 +259,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9R2-gw-sV0"/>
                     </view>
-                    <navigationItem key="navigationItem" id="JHb-js-C5z"/>
+                    <navigationItem key="navigationItem" title="Details" id="JHb-js-C5z"/>
                     <connections>
                         <outlet property="imageView" destination="B9I-Mv-Ux3" id="3s7-xf-Cii"/>
                         <outlet property="instructionsLabel" destination="qwr-Mi-CYw" id="WDr-Uq-y1A"/>
