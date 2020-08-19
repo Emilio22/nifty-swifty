@@ -70,10 +70,22 @@ class NewDrinkViewController: UIViewController {
     
     
     @IBAction func addIngredientPushed(_ sender: UIButton) {
-        if (ingredientTextField.text == "" || qtyTextField.text == ""){
         
+        if (qtyTextField.text == "") || (ingredientTextField.text == "") {
+            return
         }
-     
+        
+        if let measurementString = qtyTextField.text,
+            let ingredientString = ingredientTextField.text {
+            ingredients.append(ingredientString)
+            measurements.append(measurementString)
+            print("Ingredient Added")
+            DispatchQueue.main.async {
+                self.qtyTextField.text = ""
+                self.ingredientTextField.text = ""
+                self.tableView.reloadData()
+            }
+        }
     }
     
 }
@@ -87,8 +99,16 @@ extension NewDrinkViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewIngredient") else { fatalError() }
-        
+        cell.textLabel?.text = measurements[indexPath.row] + " " + ingredients[indexPath.row]
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            ingredients.remove(at: indexPath.row)
+            measurements.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
     }
 }
 
