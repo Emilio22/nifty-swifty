@@ -51,6 +51,8 @@ class DetailViewController: UIViewController {
     
 }
 
+
+//MARK:- TableView
 extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cocktail.getIngredients().count
