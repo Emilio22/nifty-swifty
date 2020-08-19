@@ -19,8 +19,6 @@ class DetailViewController: UIViewController {
     
     
     var cocktail: Cocktail
-    var ingredients : [String] = []
-    var measurements : [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,18 +27,11 @@ class DetailViewController: UIViewController {
         tableView.estimatedRowHeight = 60.0
         tableView.rowHeight = UITableView.automaticDimension;
         
-        ingredients = cocktail.ingredients
-        measurements = cocktail.measurements
-        
         //Some items will have no measurement, adding space prevents crash
-        if (measurements.count < ingredients.count) {
-            measurements.append(" ")
+        if (cocktail.measurements.count < cocktail.ingredients.count) {
+            cocktail.measurements.append(" ")
         }
         updateView()
-        
-        print(cocktail.getIngredients())
-        print(cocktail.getMeasurements())
-        print(cocktail.instructions)
         
     }
     
@@ -67,7 +58,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "IngredientMeasurementCell", for: indexPath)
-        cell.textLabel?.text = "\(measurements[indexPath.row]) \(ingredients[indexPath.row])"
+        cell.textLabel?.text = "\(cocktail.measurements[indexPath.row]) \(cocktail.ingredients[indexPath.row])"
         return cell
     }
     

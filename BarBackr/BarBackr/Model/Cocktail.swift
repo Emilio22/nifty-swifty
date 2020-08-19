@@ -36,6 +36,8 @@ struct Cocktail: Codable {
     
     let instructions: String
     
+    
+    // Extension getIngredients and getMeasurements will fill array from ingredients/measurements in cocktail
     lazy var ingredients = {
         return self.getIngredients()
     }()
