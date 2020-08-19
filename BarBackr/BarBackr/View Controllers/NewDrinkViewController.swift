@@ -21,6 +21,8 @@ class NewDrinkViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    let picker = UIPickerView()
+    
     var name: String = ""
     var imgPath: String = ""
     var instructions: String = ""
@@ -28,13 +30,38 @@ class NewDrinkViewController: UIViewController {
     var ingredients: [String] = []
     var measurements: [String] = []
     
+    //Values for picker
+    let numberRange = Array(0...200)
+    let fractions = ["","1/8","1/4","1/3","1/2","2/3","3/4"]
+    let units = [
+        "",
+        "oz",
+        "ml",
+        "Dash",
+        "tsp",
+        "tbps",
+        "cup",
+        "Pint",
+        "cL",
+        "L",
+        "Drop",
+        "Pinch",
+        "Splash"
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Set up Instructions Text View
         instructionsText.delegate = self
         instructionsText.text = "Add Instructions"
         instructionsText.textColor = UIColor.lightGray
         instructionsText.layer.borderWidth = 1
         instructionsText.layer.borderColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        
+        //Picker View
+        qtyTextField.inputView = picker
+        picker.delegate = self
  
     }
     
@@ -65,6 +92,42 @@ extension NewDrinkViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+
+// MARK:- PickerView
+extension NewDrinkViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 3
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if component == 0 {
+            return numberRange.count
+        } else if component == 1 {
+            return fractions.count
+        } else {
+            return units.count
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if component == 0 {
+            return String(numberRange[row])
+        } else if component == 1 {
+            return fractions[row]
+        } else {
+            return units[row]
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let number = String(numberRange[pickerView.selectedRow(inComponent: 0)])
+        let fraction = fractions[pickerView.selectedRow(inComponent: 1)]
+        let unit = units[pickerView.selectedRow(inComponent: 2)]
+        qtyTextField.text = number + " " + fraction + " " + unit
+    }
+    
+}
 
 // MARK:- TextView
 extension NewDrinkViewController: UITextViewDelegate {
