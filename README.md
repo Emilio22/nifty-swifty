@@ -8,12 +8,6 @@ Discord: TM: Emilio
 ## Where
 From the United States.  Currently, residing in St. Louis, Missouri.
 
-## Programming Experience
-I have a decent amount of programming experience.  Graduated in 2016 from 
-the University of Missouri with a bachelor in IT. Learned the fundamentals 
-then but have taken time away from the tech scene since.
-Over the last year I have played with html/css/js and recently swift
-
 ## Interests / Hobbies
 I have many hobbies / interests outside of tech.  Some of my big ones:  
 * I am a huge foodie.  Most my life and while in school I have worked in restaurants. The last four years I have been bar
