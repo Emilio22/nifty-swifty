@@ -8,8 +8,6 @@
 
 import Foundation
 
-import Foundation
-
 struct Cocktail: Codable {
     let drinkName: String
     let imageString: String
@@ -37,6 +35,14 @@ struct Cocktail: Codable {
     let measurement10: String?
     
     let instructions: String
+    
+    lazy var ingredients = {
+        return self.getIngredients()
+    }()
+    
+    lazy var measurements = {
+        return self.getMeasurements()
+    }()
  
     enum CodingKeys: String, CodingKey {
         case drinkName = "strDrink"

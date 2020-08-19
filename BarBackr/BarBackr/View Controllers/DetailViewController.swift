@@ -18,7 +18,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var instructionsLabel: UILabel!
     
     
-    let cocktail: Cocktail
+    var cocktail: Cocktail
     var ingredients : [String] = []
     var measurements : [String] = []
     
@@ -29,8 +29,8 @@ class DetailViewController: UIViewController {
         tableView.estimatedRowHeight = 60.0
         tableView.rowHeight = UITableView.automaticDimension;
         
-        ingredients = cocktail.getIngredients()
-        measurements = cocktail.getMeasurements()
+        ingredients = cocktail.ingredients
+        measurements = cocktail.measurements
         
         //Some items will have no measurement, adding space prevents crash
         if (measurements.count < ingredients.count) {

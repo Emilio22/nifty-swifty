@@ -95,6 +95,8 @@ class SearchViewController: UITableViewController, UINavigationControllerDelegat
 // MARK:- SearchResultCell Delegate
 extension SearchViewController: SearchResultCellDelegate {
     func searchResultTableCell(_ searchResultTableCell: SearchResultCell, addButtonTappedFor cocktail: Cocktail) {
+        
+        
         drinksManager.drinks.append(cocktail)
         print("drink added")
     }
