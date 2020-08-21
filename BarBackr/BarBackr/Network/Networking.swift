@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class Networking {
-    // MARK: - Properties
     
     static let sharedInstance = Networking()
     
