@@ -7,22 +7,9 @@
 //
 
 import Foundation
+import UIKit
 
 class DrinksMananger {
     var drinks: [Cocktail] = []
-    
-    
-//    static func saveImage(_ image: UIImage, forCocktail cocktail: Cocktail) {
-//        let imageURL = FileManager.documentDirectoryURL.appendingPathComponent(cocktail.drinkName)
-//        if let jpgData = image.jpegData(compressionQuality: 0.7) {
-//            try? jpgData.write(to: imageURL, options: .atomicWrite)
-//        }
-//    }
-//    
-//    static func loadImage(forCocktail cocktail: Cocktail) -> UIImage? {
-//        let imageURL = FileManager.documentDirectoryURL.appendingPathComponent(cocktail.drinkName)
-//        return UIImage(contentsOfFile: imageURL.path)
-//        
-//    }
     
 }

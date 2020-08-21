@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Cocktail: Codable {
     let drinkName: String
@@ -35,6 +36,8 @@ struct Cocktail: Codable {
     let measurement10: String?
     
     let instructions: String
+    
+    var savedImage: UIImage?
     
     
     // Extension getIngredients and getMeasurements will fill array from ingredients/measurements in cocktail

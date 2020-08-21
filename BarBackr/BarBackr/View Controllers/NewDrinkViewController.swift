@@ -21,10 +21,13 @@ class NewDrinkViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    let picker = UIPickerView()
+    var drinksManager: DrinksMananger
+    
+    let textPicker = UIPickerView()
+    
     
     var name: String = ""
-    var imgPath: String = ""
+    var savedImgPath: String = ""
     var instructions: String = ""
     
     var ingredients: [String] = []
@@ -60,12 +63,26 @@ class NewDrinkViewController: UIViewController {
         instructionsText.layer.borderColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         
         //Picker View
-        qtyTextField.inputView = picker
-        picker.delegate = self
+        qtyTextField.inputView = textPicker
+        textPicker.delegate = self
  
     }
     
-    @IBAction func updateImagePushed(_ sender: UIButton) {
+    init?(coder: NSCoder, drinks: DrinksMananger) {
+        self.drinksManager = drinks
+        super.init(coder: coder)
+    }
+    
+    required init?(coder: NSCoder) { fatalError() }
+    
+    @IBAction func addPressed(_ sender: Any) {
+    }
+    
+    @IBAction func updateImagePressed(_ sender: UIButton) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.allowsEditing = true
+        imagePicker.delegate = self
+        present(imagePicker, animated: true)
     }
     
     
@@ -88,9 +105,34 @@ class NewDrinkViewController: UIViewController {
         }
     }
     
+    func updateView(){
+        imageView.image = UIImage(contentsOfFile: savedImgPath)
+    }
+    
 }
 
-// MARK:- TableView
+//MARK:- Image Picker
+extension NewDrinkViewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        guard let image = info[.editedImage] as? UIImage else { return }
+
+        //create unique identifier for the image name
+        let imageName = UUID().uuidString
+        let imagePath = FileManager.documentDirectoryURL.appendingPathComponent(imageName)
+
+        if let jpegData = image.jpegData(compressionQuality: 0.8) {
+            try? jpegData.write(to: imagePath)
+        }
+        
+        savedImgPath = imagePath.path
+        updateView()
+        dismiss(animated: true)
+    }
+
+}
+
+// MARK:- Table View
 extension NewDrinkViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ingredients.count
@@ -113,7 +155,7 @@ extension NewDrinkViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 
-// MARK:- PickerView
+// MARK:- Picker View
 extension NewDrinkViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

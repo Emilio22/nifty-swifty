@@ -66,6 +66,10 @@ class DrinksViewController: UIViewController {
     }
     
     // MARK:- Segues
+    @IBSegueAction func showNewDrinkView(_ coder: NSCoder) -> NewDrinkViewController? {
+        return NewDrinkViewController(coder: coder, drinks: self.drinksManager)
+    }
+    
     @IBSegueAction func showDetailView(_ coder: NSCoder) -> DetailViewController? {
         guard let indexPath = tableView.indexPathForSelectedRow else { fatalError() }
         let cocktail = drinksManager.drinks[indexPath.row]

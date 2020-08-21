@@ -29,7 +29,7 @@
                                         <rect key="frame" x="134.5" y="0.0" width="145" height="30"/>
                                         <state key="normal" title="Create"/>
                                         <connections>
-                                            <segue destination="5b2-hg-qun" kind="show" id="nOA-kP-FLO"/>
+                                            <segue destination="5b2-hg-qun" kind="show" destinationCreationSelector="showNewDrinkView:" id="nOA-kP-FLO"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pre-NU-NkM">
@@ -167,7 +167,7 @@
                                                 </constraints>
                                                 <state key="normal" title="Update Image"/>
                                                 <connections>
-                                                    <action selector="updateImagePushed:" destination="5b2-hg-qun" eventType="touchUpInside" id="sRd-QR-PDA"/>
+                                                    <action selector="updateImagePressed:" destination="5b2-hg-qun" eventType="touchUpInside" id="sRd-QR-PDA"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -258,7 +258,11 @@
                         <viewLayoutGuide key="safeArea" id="HZz-Ug-EoY"/>
                     </view>
                     <navigationItem key="navigationItem" title="New Recipe" id="5Bj-VW-b2i">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="mIR-WS-CcG"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="mIR-WS-CcG">
+                            <connections>
+                                <action selector="addPressed:" destination="5b2-hg-qun" id="Ks0-yh-pFt"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="addIngredientButton" destination="lyx-KL-Jt8" id="e63-9L-gqg"/>
