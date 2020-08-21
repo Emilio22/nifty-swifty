@@ -44,8 +44,14 @@ class DetailViewController: UIViewController {
     
     func updateView() {
         nameLabel.text = cocktail.drinkName
-        let url = URL(string: cocktail.imageString)
-        imageView.kf.setImage(with: url)
+        
+        //check if there is a saved image or not
+        if cocktail.savedImage == nil {
+            let url = URL(string: cocktail.imageString)
+            imageView.kf.setImage(with: url)
+        } else {
+            imageView.image = cocktail.savedImage
+        }
         instructionsLabel.text = cocktail.instructions
     }
     

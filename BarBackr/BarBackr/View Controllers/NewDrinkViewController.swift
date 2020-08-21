@@ -76,6 +76,34 @@ class NewDrinkViewController: UIViewController {
     required init?(coder: NSCoder) { fatalError() }
     
     @IBAction func addPressed(_ sender: Any) {
+  
+        guard let newCocktialName = nameLabel.text else{
+            print("could not get name")
+            return
+            
+        }
+        guard let instructions = instructionsText.text else {
+            print("Could not get instructions")
+            return
+        }
+        guard let image = UIImage(contentsOfFile: savedImgPath) else {
+            print("Could not get image")
+            return
+        }
+        
+        let newCocktail = Cocktail(drinkName: newCocktialName,
+                                   imageString: "",
+                                   ingredient1: nil, ingredient2: nil, ingredient3: nil, ingredient4: nil, ingredient5: nil, ingredient6: nil, ingredient7: nil, ingredient8: nil, ingredient9: nil, ingredient10: nil, measurement1: nil, measurement2: nil, measurement3: nil, measurement4: nil, measurement5: nil, measurement6: nil, measurement7: nil, measurement8: nil, measurement9: nil, measurement10: nil,
+                                   instructions: instructions,
+                                   savedImage: image,
+                                   ingredients: ingredients,
+                                   measurements: measurements)
+        
+        
+        drinksManager.drinks.append(newCocktail)
+        print("Cocktail added")
+        _ = navigationController?.popViewController(animated: true)
+    
     }
     
     @IBAction func updateImagePressed(_ sender: UIButton) {

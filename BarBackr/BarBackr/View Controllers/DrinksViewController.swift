@@ -96,10 +96,14 @@ extension DrinksViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(CocktailCell.self)", for: indexPath) as? CocktailCell else { fatalError() }
         let cocktail = drinksManager.drinks[indexPath.row]
         let url = URL(string: cocktail.imageString)
-        
         cell.nameLabel.text = cocktail.drinkName
-        cell.cockTailThumbNail.kf.setImage(with: url)
         
+        if cocktail.savedImage == nil{
+            cell.cockTailThumbNail.kf.setImage(with: url)
+        }
+        else {
+            cell.cockTailThumbNail.image = cocktail.savedImage
+        }
         
         return cell
     }
