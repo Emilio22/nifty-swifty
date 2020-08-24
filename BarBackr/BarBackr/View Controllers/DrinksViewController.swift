@@ -89,6 +89,12 @@ extension DrinksViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //if drinks is empty, show empty message
+        if drinksManager.drinks.count == 0{
+            self.tableView.setEmptyMessage("Search or Create a new Cocktail!")
+        } else {
+            self.tableView.restore()
+        }
         return drinksManager.drinks.count
     }
     
