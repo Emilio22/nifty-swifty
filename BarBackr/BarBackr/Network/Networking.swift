@@ -44,7 +44,7 @@ class Networking {
             
         }
         var url: URL {
-            return URL(string: stringValue) ?? URL(string: "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=marg")!
+            return URL(string: stringValue)!
         }
     }
     

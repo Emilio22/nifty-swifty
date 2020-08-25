@@ -97,6 +97,7 @@ extension SearchViewController: SearchResultCellDelegate {
     func searchResultTableCell(_ searchResultTableCell: SearchResultCell, addButtonTappedFor cocktail: Cocktail) {
         
         drinksManager.drinks.append(cocktail)
+        _ = navigationController?.popViewController(animated: true)
         print("drink added")
     }
 }

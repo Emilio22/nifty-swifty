@@ -102,6 +102,7 @@ class NewDrinkViewController: UIViewController {
         
         drinksManager.drinks.append(newCocktail)
         print("Cocktail added")
+        //return to last view controller
         _ = navigationController?.popViewController(animated: true)
     
     }

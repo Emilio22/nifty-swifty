@@ -19,7 +19,6 @@ class DrinksViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        tableView.rowHeight = 100
     
     }
     
@@ -46,8 +45,9 @@ class DrinksViewController: UIViewController {
         }
     }
     
+    
+    //Shake app for random cocktail
     override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-        // code you want to implement
         if motion == .motionShake {
             Networking.sharedInstance.getRandomCocktail { (result) in
                 do {
@@ -85,7 +85,7 @@ class DrinksViewController: UIViewController {
 // MARK:- Tableview
 extension DrinksViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 85
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
