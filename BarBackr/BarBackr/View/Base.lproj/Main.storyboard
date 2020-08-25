@@ -16,14 +16,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="-11" translatesAutoresizingMaskIntoConstraints="NO" id="fTB-WQ-Afe" userLabel="Buttons">
-                                <rect key="frame" x="0.0" y="816" width="414" height="80"/>
+                                <rect key="frame" x="0.0" y="825" width="414" height="71"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VsG-Tc-EvF">
-                                        <rect key="frame" x="0.0" y="0.0" width="212.5" height="80"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="212.5" height="71"/>
                                         <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="Create" image="square.and.pencil" catalog="system">
+                                        <state key="normal" title=" Create" image="square.and.pencil" catalog="system">
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="24"/>
                                         </state>
                                         <connections>
@@ -31,10 +31,11 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pre-NU-NkM">
-                                        <rect key="frame" x="201.5" y="0.0" width="212.5" height="80"/>
+                                        <rect key="frame" x="201.5" y="0.0" width="212.5" height="71"/>
                                         <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="Search" image="magnifyingglass" catalog="system">
+                                        <state key="normal" title=" Search" image="magnifyingglass" catalog="system">
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="23"/>
                                         </state>
                                         <connections>
@@ -43,11 +44,11 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="ORE-tN-cn8"/>
+                                    <constraint firstAttribute="height" constant="71" id="ORE-tN-cn8"/>
                                 </constraints>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="K4l-5J-qhT">
-                                <rect key="frame" x="0.0" y="88" width="414" height="728"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="737"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CocktailCell" rowHeight="100" id="9NK-CB-hvO" customClass="CocktailCell" customModule="BarBackr" customModuleProvider="target">
@@ -100,7 +101,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="K4l-5J-qhT" secondAttribute="trailing" id="1eA-ff-7GM"/>
-                            <constraint firstItem="fTB-WQ-Afe" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="5bE-UP-ueb"/>
+                            <constraint firstItem="fTB-WQ-Afe" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="34" id="5bE-UP-ueb"/>
                             <constraint firstItem="K4l-5J-qhT" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Tyj-SX-bA2"/>
                             <constraint firstItem="K4l-5J-qhT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="s56-sq-I4Q"/>
                             <constraint firstItem="fTB-WQ-Afe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="tvw-ns-xB6"/>

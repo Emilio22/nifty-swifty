@@ -29,22 +29,6 @@ class DrinksViewController: UIViewController {
         }
     }
 
-    // MARK:- Random Cocktail
-    @IBAction func getRandomCocktail(_ sender: UIButton) {
-        Networking.sharedInstance.getRandomCocktail { (result) in
-            do {
-                let results = try result.get()
-                DispatchQueue.main.async {
-                    let cocktail = results.drinks[0]
-                    self.drinksManager.drinks.append(cocktail)
-                    self.tableView.reloadData()
-                }
-            } catch {
-                print(result)
-            }
-        }
-    }
-    
     
     //Shake app for random cocktail
     override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
@@ -66,16 +50,19 @@ class DrinksViewController: UIViewController {
     }
     
     // MARK:- Segues
+    //Create Button Pushed
     @IBSegueAction func showNewDrinkView(_ coder: NSCoder) -> NewDrinkViewController? {
         return NewDrinkViewController(coder: coder, drinks: self.drinksManager)
     }
     
+    //Cocktail cell pushed
     @IBSegueAction func showDetailView(_ coder: NSCoder) -> DetailViewController? {
         guard let indexPath = tableView.indexPathForSelectedRow else { fatalError() }
         let cocktail = drinksManager.drinks[indexPath.row]
         return DetailViewController(coder: coder, cocktail: cocktail)
     }
     
+    //Search Pushed
     @IBSegueAction func showSearchView(_ coder: NSCoder) -> SearchViewController? {
         return SearchViewController(coder: coder, drinks: self.drinksManager)
     }
