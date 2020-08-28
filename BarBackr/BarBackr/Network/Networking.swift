@@ -21,13 +21,6 @@ class Networking {
         case decodeFailed
     }
     
-    enum HTTPMethod: String {
-        case get = "GET"
-        case post = "POST"
-        case pull = "PULL"
-        case delete = "DELETE"
-    }
-    
     enum Endpoints {
         static let baseURL = "https://www.thecocktaildb.com/api/json/v1/1"
         //Endpoint cases
@@ -52,7 +45,7 @@ class Networking {
     //Search for cocktail
     func searchCocktail(searchPath: String, completion: @escaping (Result<Drinks, NetworkError>) -> Void ){
         var request = URLRequest(url: Endpoints.getSearchList(searchPath).url)
-        request.httpMethod = HTTPMethod.get.rawValue
+        request.httpMethod = "GET"
         
         //Request the data
         URLSession.shared.dataTask(with: request) { (data, response, error) in
@@ -90,7 +83,7 @@ class Networking {
         
         //Build up the URL with necessary information
         var request = URLRequest(url: Endpoints.getRandomCocktail.url)
-        request.httpMethod = HTTPMethod.get.rawValue
+        request.httpMethod = "GET"
         
         //Request the data
         URLSession.shared.dataTask(with: request) { (data, response, error) in
